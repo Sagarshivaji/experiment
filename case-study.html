@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking App Case Study | Your Name</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SHARED VARIABLES --- */
+        :root {
+            --bg-color: #ffffff; 
+            --bg-light: #f8f9fa; 
+            --text-main: #202124; 
+            --text-muted: #5f6368;
+            --primary-blue: #1a73e8; 
+            --primary-blue-hover: #1557b0; 
+            --border-color: #dadce0;
+            
+            /* Pastel colors for placeholders */
+            --pastel-blue: #e8f0fe; 
+            --pastel-red: #fce8e6; 
+            --pastel-green: #e6f4ea;
+            
+            --radius-card: 24px; 
+            --radius-btn: 9999px;
+            --font-heading: 'Google Sans', 'Roboto', sans-serif; 
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-main); 
+            background-color: var(--bg-color); 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased; 
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 500; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- UTILS & BUTTONS --- */
+        .section { padding: 80px 0; }
+        .bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 16px; } 
+        .mb-4 { margin-bottom: 32px; } 
+        .mb-6 { margin-bottom: 48px; } 
+        .mt-4 { margin-top: 32px; }
+        
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 28px; border-radius: var(--radius-btn);
+            font-family: var(--font-heading); font-weight: 500; font-size: 1rem;
+            transition: all 0.2s ease; cursor: pointer;
+        }
+        .btn-primary { background-color: var(--primary-blue); color: white; border: 1px solid var(--primary-blue); }
+        .btn-primary:hover { background-color: var(--primary-blue-hover); box-shadow: 0 4px 12px rgba(26,115,232,0.3); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-outline:hover { background-color: #f1f3f4; transform: translateY(-2px); }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; margin-top: 32px; }
+
+        /* --- NAVBAR --- */
+        .navbar { 
+            position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); z-index: 100; 
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 16px 24px; 
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+        .logo span { color: var(--primary-blue); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a:not(.btn) { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; transition: color 0.2s; }
+        .nav-links a:not(.btn):hover { color: var(--text-main); }
+
+        /* --- HERO SECTION --- */
+        .cs-hero { padding: 100px 0 60px; text-align: center; }
+        .cs-hero h1 { font-size: 4rem; letter-spacing: -1.5px; margin-bottom: 24px; }
+        .cs-hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
+        
+        .meta-grid { 
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; 
+            max-width: 900px; margin: 60px auto 0; text-align: left; 
+            border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 32px 0; 
+        }
+        .meta-item h4 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .meta-item p { font-size: 1.1rem; font-weight: 500; color: var(--text-main); line-height: 1.4; }
+        .meta-link { color: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px; transition: text-decoration 0.2s; }
+        .meta-link:hover { text-decoration: underline; }
+
+        /* --- IMAGE PLACEHOLDERS --- */
+        .img-placeholder { 
+            width: 100%; border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; 
+            font-family: var(--font-heading); font-size: 1.2rem; color: #3c4043; border: 1px solid var(--border-color); 
+            background-color: var(--bg-light); text-align: center; padding: 20px;
+        }
+        .img-hero { height: 500px; background-color: var(--pastel-blue); margin-bottom: 40px; }
+        .img-wide { height: 400px; margin: 40px 0; }
+        .img-half { height: 300px; }
+        
+        /* --- CONTENT SECTIONS --- */
+        .content-block { max-width: 800px; margin: 0 auto; }
+        .content-block h2 { font-size: 2.2rem; margin-bottom: 24px; letter-spacing: -0.5px; }
+        .content-block h3 { font-size: 1.5rem; margin: 40px 0 16px 0; }
+        .content-block p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 24px; }
+        
+        .process-label { 
+            display: inline-block; background-color: var(--primary-blue); color: white; 
+            padding: 6px 16px; border-radius: var(--radius-btn); font-size: 0.85rem; 
+            font-family: var(--font-heading); font-weight: 500; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; 
+        }
+
+        /* --- GRIDS --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        
+        .persona-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; }
+        .persona-card h4 { font-size: 1.2rem; margin-bottom: 8px; }
+        .persona-card .role { color: var(--primary-blue); font-weight: 500; margin-bottom: 16px; font-size: 0.9rem; display: block; }
+        .persona-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* --- METRICS --- */
+        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; text-align: center; }
+        .metric-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; }
+        .metric-card h3 { font-size: 3rem; color: var(--primary-blue); margin-bottom: 8px; }
+        .metric-card p { font-size: 1rem; font-weight: 500; color: var(--text-main); }
+
+        /* --- NEXT PROJECT --- */
+        .next-project { 
+            display: block; text-align: center; padding: 80px 24px; 
+            background-color: var(--bg-color); border-top: 1px solid var(--border-color); transition: background-color 0.3s; 
+        }
+        .next-project:hover { background-color: var(--bg-light); }
+        .next-project h4 { color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .next-project h2 { font-size: 3rem; color: var(--text-main); }
+
+        /* --- FOOTER --- */
+        .footer { padding: 64px 0 32px; background-color: var(--bg-light); border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+        .footer-legal { display: flex; gap: 24px; }
+        
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .cs-hero h1 { font-size: 2.5rem; }
+            .meta-grid { grid-template-columns: 1fr 1fr; }
+            .grid-2, .grid-3, .metrics-grid { grid-template-columns: 1fr; }
+            .img-hero { height: 300px; } 
+            .img-wide { height: 250px; } 
+            .img-half { height: 200px; }
+            .next-project h2 { font-size: 2rem; }
+            .hero-actions { flex-direction: column; }
+            .nav-links { display: none; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation (Updated to match the 4-page site) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">YourName<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="research.html">Research</a>
+                <a href="case-study.html" style="color: var(--text-main);">Case Study</a>
+                <a href="#" class="btn btn-outline" style="padding: 8px 20px;">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="cs-hero container">
+        <h1>Redesigning the Banking App</h1>
+        <p>A complete UI/UX overhaul focusing on reducing cognitive load and simplifying money transfers for young professionals.</p>
+
+        <!-- Prominent Links to Figma & Git -->
+        <div class="hero-actions">
+            <a href="https://figma.com/your-prototype-link" target="_blank" class="btn btn-primary">View Figma Prototype ↗</a>
+            <a href="https://github.com/yourusername/banking-app" target="_blank" class="btn btn-outline">GitHub Repository ↗</a>
+        </div>
+
+        <!-- Project Meta Data -->
+        <div class="meta-grid">
+            <div class="meta-item"><h4>My Role</h4><p>Lead UI/UX Designer</p></div>
+            <div class="meta-item"><h4>Timeline</h4><p>8 Weeks (2023)</p></div>
+            <div class="meta-item"><h4>Platform</h4><p>iOS & Android</p></div>
+            <div class="meta-item">
+                <h4>Deliverables</h4>
+                <p>
+                    <a href="https://figma.com/your-file" target="_blank" class="meta-link">Figma File ↗</a><br>
+                    <a href="https://github.com/yourusername/repo" target="_blank" class="meta-link">Source Code ↗</a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="container">
+        <div class="img-placeholder img-hero">[ Insert High-Quality Hero Mockup Here ]</div>
+    </div>
+
+    <!-- 1. EMPATHIZE (RESEARCH) -->
+    <section class="section bg-light">
+        <div class="container content-block">
+            <span class="process-label">Phase 1: Empathize</span>
+            <h2>Understanding the Users</h2>
+            <p>To understand why users were abandoning the transfer flow, I conducted qualitative research through 10 user interviews and analyzed app store reviews. I discovered that users felt the app was "too corporate" and "confusing" for everyday tasks.</p>
+            
+            <div class="grid-2 mb-6">
+                <div class="persona-card">
+                    <h4>Primary Persona</h4>
+                    <span class="role">"The Busy Professional"</span>
+                    <p><strong>Goals:</strong> Wants to split bills and send money in under 10 seconds.<br><br>
+                    <strong>Frustrations:</strong> Too many steps to add a new recipient. Confusing navigation.</p>
+                </div>
+                <div class="persona-card">
+                    <h4>Secondary Persona</h4>
+                    <span class="role">"The Budgeter"</span>
+                    <p><strong>Goals:</strong> Needs a clear overview of monthly spending.<br><br>
+                    <strong>Frustrations:</strong> Hidden fees and unclear transaction categories.</p>
+                </div>
+            </div>
+            
+            <p><strong>Key Insight:</strong> 80% of users only used 3 core features: Checking balance, sending money, and viewing recent transactions.</p>
+        </div>
+    </section>
+
+    <!-- 2. DEFINE -->
+    <section class="section">
+        <div class="container content-block">
+            <span class="process-label">Phase 2: Define</span>
+            <h2>Defining the Core Problem</h2>
+            <p>Based on the research, I framed the problem statement:</p>
+            
+            <div style="background-color: var(--pastel-blue); padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+                <h3 style="margin-top: 0; color: var(--primary-blue);">"Young professionals need a frictionless way to send money and track daily spending without navigating through complex, enterprise-style banking menus."</h3>
+            </div>
+            
+            <p>I mapped out the current user journey and created a new user flow that reduced the steps to send money from <strong>7 clicks down to 3 clicks</strong>.</p>
+            
+            <div class="img-placeholder img-wide" style="background-color: var(--pastel-green);">
+                [ Insert User Flow Diagram / Journey Map Here ]
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. IDEATE (WIREFRAMES) -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="content-block">
+                <span class="process-label">Phase 3: Ideate</span>
+                <h2>Sketching & Wireframing</h2>
+                <p>I started with low-fidelity sketches on paper to explore different layouts. After a quick round of internal feedback, I moved to mid-fidelity wireframes in Figma to test the information architecture.</p>
+            </div>
+            
+            <div class="grid-3 mt-4">
+                <div class="img-placeholder img-half" style="background-color: white; border: 2px dashed var(--border-color);">[ Wireframe 1 ]</div>
+                <div class="img-placeholder img-half" style="background-color: white; border: 2px dashed var(--border-color);">[ Wireframe 2 ]</div>
+                <div class="img-placeholder img-half" style="background-color: white; border: 2px dashed var(--border-color);">[ Wireframe 3 ]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROTOTYPE & UI DESIGN -->
+    <section class="section">
+        <div class="container content-block">
+            <span class="process-label">Phase 4: Design</span>
+            <h2>High-Fidelity UI & Design System</h2>
+            <p>I developed a design system that utilized a modern, friendly color palette while maintaining the trust required for a banking app. The UI features large, accessible touch targets and clear typography.</p>
+            
+            <div class="img-placeholder img-wide" style="background-color: var(--pastel-red);">
+                [ Insert Final UI Screens - Before & After Comparison ]
+            </div>
+
+            <h3>Accessibility Considerations</h3>
+            <p>I ensured all text met WCAG AA contrast standards, added haptic feedback suggestions for buttons, and implemented a dynamic type scale for users with visual impairments.</p>
+        </div>
+    </section>
+
+    <!-- 5. TESTING & IMPACT -->
+    <section class="section bg-light">
+        <div class="container content-block">
+            <span class="process-label">Phase 5: Validate</span>
+            <h2>Usability Testing & Results</h2>
+            <p>I conducted moderated usability tests with 5 participants using an interactive Figma prototype. Users were asked to complete specific tasks like "Send $20 to Sarah" and "Find out how much you spent on food last week."</p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>100%</h3>
+                    <p>Task Completion Rate (Up from 60%)</p>
+                </div>
+                <div class="metric-card">
+                    <h3>-40%</h3>
+                    <p>Time to Complete a Transfer</p>
+                </div>
+                <div class="metric-card">
+                    <h3>4.8/5</h3>
+                    <p>Average Ease-of-Use Score</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="https://figma.com/your-prototype-link" target="_blank" class="btn btn-primary">Interact with the Prototype ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <a href="index.html" class="next-project">
+        <h4>Back to Home</h4>
+        <h2>Explore More Work &rarr;</h2>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Dribbble</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

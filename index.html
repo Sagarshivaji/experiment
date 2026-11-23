@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Multidisciplinary Designer & Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #ffffff; 
+            --bg-light: #f8f9fa; 
+            --text-main: #202124; 
+            --text-muted: #5f6368;
+            --primary-blue: #1a73e8; 
+            --primary-blue-hover: #1557b0; 
+            --border-color: #dadce0;
+            
+            /* Pastel colors for placeholders */
+            --pastel-blue: #e8f0fe; 
+            --pastel-red: #fce8e6; 
+            --pastel-green: #e6f4ea;
+            --pastel-yellow: #fef7e0;
+            --pastel-purple: #f3e8fd;
+            
+            --radius-card: 24px; 
+            --radius-btn: 9999px;
+            --font-heading: 'Google Sans', 'Roboto', sans-serif; 
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-main); 
+            background-color: var(--bg-color); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 500; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- UTILS & BUTTONS --- */
+        .section { padding: 100px 0; }
+        .bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .text-center { text-align: center; }
+        .mb-4 { margin-bottom: 32px; }
+        
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 32px; border-radius: var(--radius-btn);
+            font-family: var(--font-heading); font-weight: 500; font-size: 1rem;
+            transition: all 0.2s ease; cursor: pointer;
+        }
+        .btn-primary { background-color: var(--primary-blue); color: white; border: 1px solid var(--primary-blue); }
+        .btn-primary:hover { background-color: var(--primary-blue-hover); box-shadow: 0 4px 12px rgba(26,115,232,0.3); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-outline:hover { background-color: #f1f3f4; transform: translateY(-2px); }
+
+        /* --- NAVBAR --- */
+        .navbar { 
+            position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); z-index: 100; 
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 16px 24px; 
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+        .logo span { color: var(--primary-blue); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a:not(.btn) { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; transition: color 0.2s; }
+        .nav-links a:not(.btn):hover { color: var(--text-main); }
+
+        /* --- HERO SECTION --- */
+        .hero { padding: 140px 0 100px; text-align: center; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; letter-spacing: -2px; margin-bottom: 24px; color: var(--text-main); }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; }
+
+        /* --- SHARED SECTION TITLES --- */
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 60px; }
+
+        /* --- GRIDS --- */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+
+        /* --- CARDS GENERAL --- */
+        .card { 
+            border: 1px solid var(--border-color); border-radius: var(--radius-card); 
+            overflow: hidden; background-color: var(--bg-color); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            display: flex; flex-direction: column; 
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
+        .card-content { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
+        .tag { font-size: 0.85rem; font-weight: 600; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
+        .card-content h3 { font-size: 1.6rem; margin-bottom: 12px; }
+        .card-content p { color: var(--text-muted); margin-bottom: 24px; font-size: 1rem; flex-grow: 1; }
+        .link-arrow { color: var(--primary-blue); font-weight: 500; font-family: var(--font-heading); font-size: 1.1rem; display: inline-flex; align-items: center; gap: 8px; }
+        .link-arrow:hover { text-decoration: underline; }
+
+        /* --- 1. UI/UX SECTION SPECIFICS --- */
+        .ux-image { height: 280px; width: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.2rem; color: #3c4043; }
+
+        /* --- 2. APP DEVELOPMENT SPECIFICS --- */
+        .app-image { height: 300px; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.2rem; color: #3c4043; background-color: var(--pastel-purple); }
+        .tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+        .tech-tag { background-color: var(--bg-light); border: 1px solid var(--border-color); color: var(--text-muted); padding: 4px 12px; border-radius: var(--radius-btn); font-size: 0.8rem; font-weight: 500; }
+
+        /* --- 3. POSTER DESIGN SPECIFICS --- */
+        .poster-image { 
+            height: 450px; /* Taller for posters */
+            display: flex; align-items: center; justify-content: center; 
+            font-family: var(--font-heading); font-size: 1.2rem; color: #3c4043; 
+        }
+
+        /* --- 4. DRAWING SPECIFICS --- */
+        .drawing-image { 
+            height: 350px; /* Squarer for illustrations */
+            display: flex; align-items: center; justify-content: center; 
+            font-family: var(--font-heading); font-size: 1.2rem; color: #3c4043; 
+        }
+
+        /* --- DARK CTA SECTION --- */
+        .dark-section { background-color: #000000; color: #ffffff; text-align: center; }
+        .dark-section h2 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -1px; }
+        .dark-section p { font-size: 1.2rem; color: #9aa0a6; margin-bottom: 40px; }
+
+        /* --- FOOTER --- */
+        .footer { padding: 64px 0 32px; background-color: var(--bg-light); border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+        .footer-legal { display: flex; gap: 24px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-buttons { flex-direction: column; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .dark-section h2 { font-size: 2.5rem; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">YourName<span>.</span></a>
+            <div class="nav-links">
+                <a href="#ux">UI/UX</a>
+                <a href="#apps">Apps</a>
+                <a href="#posters">Posters</a>
+                <a href="#art">Art</a>
+                <a href="about.html">About</a>
+                <a href="case-study.html" class="btn btn-outline" style="padding: 8px 20px;">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero container">
+        <h1>I design interfaces, build apps, and create visual art.</h1>
+        <p>A multidisciplinary creator blending UI/UX design, frontend development, and graphic illustration into seamless digital experiences.</p>
+        <div class="hero-buttons">
+            <a href="#ux" class="btn btn-primary">Explore My Work</a>
+            <a href="about.html" class="btn btn-outline">More About Me</a>
+        </div>
+    </header>
+
+    <!-- 1. UI/UX CASE STUDIES -->
+    <section id="ux" class="section">
+        <div class="container">
+            <h2 class="section-title">UI/UX Case Studies</h2>
+            <p class="section-subtitle">End-to-end design thinking and user-centric product design.</p>
+            
+            <div class="grid-2">
+                <!-- Project 1 (Links to Case Study) -->
+                <div class="card">
+                    <div class="ux-image" style="background-color: var(--pastel-blue);">
+                        [ Insert Banking App Mockup ]
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Mobile App Design</span>
+                        <h3>Banking App Redesign</h3>
+                        <p>A complete design thinking process overhauling a mobile banking app to reduce cognitive load for young professionals.</p>
+                        <a href="case-study.html" class="link-arrow">Read Case Study &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card">
+                    <div class="ux-image" style="background-color: var(--pastel-green);">
+                        [ Insert SaaS Dashboard Mockup ]
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Web Platform Design</span>
+                        <h3>SaaS Analytics Dashboard</h3>
+                        <p>Designing a data-heavy B2B platform to help managers quickly visualize team performance and track KPIs.</p>
+                        <a href="#" class="link-arrow">View Case Study &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. APPLICATIONS DEVELOPED -->
+    <section id="apps" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Applications I've Built</h2>
+            <p class="section-subtitle">Bringing designs to life with clean, modern code.</p>
+            
+            <div class="grid-2">
+                <!-- App 1 -->
+                <div class="card">
+                    <div class="app-image">[ Insert App Screenshot / Code Editor Graphic ]</div>
+                    <div class="card-content">
+                        <h3>Task Management App</h3>
+                        <p>A full-stack productivity application featuring drag-and-drop kanban boards, user authentication, and real-time database sync.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div style="margin-top: 24px; display: flex; gap: 16px;">
+                            <a href="#" class="link-arrow">Live Demo &nearr;</a>
+                            <a href="#" class="link-arrow" style="color: var(--text-muted);">GitHub &nearr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 2 -->
+                <div class="card">
+                    <div class="app-image" style="background-color: var(--pastel-yellow);">[ Insert App Screenshot / Mobile Mockup ]</div>
+                    <div class="card-content">
+                        <h3>Weather Forecast App</h3>
+                        <p>A mobile-first weather application pulling data from a public API, featuring dynamic backgrounds based on current weather conditions.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div style="margin-top: 24px; display: flex; gap: 16px;">
+                            <a href="#" class="link-arrow">Live Demo &nearr;</a>
+                            <a href="#" class="link-arrow" style="color: var(--text-muted);">GitHub &nearr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. POSTER DESIGN -->
+    <section id="posters" class="section">
+        <div class="container">
+            <h2 class="section-title">Graphic & Poster Design</h2>
+            <p class="section-subtitle">Visual communication, typography, and brand identity.</p>
+            
+            <div class="grid-3">
+                <!-- Poster 1 -->
+                <div class="card">
+                    <div class="poster-image" style="background-color: var(--pastel-red);">
+                        [ Insert Poster Design Here ]
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Typography</span>
+                        <h3>Music Festival Poster</h3>
+                        <p>Bold, experimental typography for a local indie music festival.</p>
+                    </div>
+                </div>
+
+                <!-- Poster 2 -->
+                <div class="card">
+                    <div class="poster-image" style="background-color: var(--pastel-blue);">
+                        [ Insert Poster Design Here ]
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Branding</span>
+                        <h3>Coffee Shop Campaign</h3>
+                        <p>A minimalist poster series for a local coffee roaster's summer campaign.</p>
+                    </div>
+                </div>
+
+                <!-- Poster 3 -->
+                <div class="card">
+                    <div class="poster-image" style="background-color: var(--pastel-yellow);">
+                        [ Insert Poster Design Here ]
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Editorial</span>
+                        <h3>Magazine Cover Design</h3>
+                        <p>Layout and typography design for a digital design publication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DRAWINGS & ILLUSTRATIONS -->
+    <section id="art" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Drawings & Illustration</h2>
+            <p class="section-subtitle">Traditional art, character design, and digital illustration.</p>
+            
+            <div class="grid-3">
+                <!-- Drawing 1 -->
+                <div class="card">
+                    <div class="drawing-image" style="background-color: var(--pastel-purple);">
+                        [ Insert Drawing Here ]
+                    </div>
+                    <div class="card-content">
+                        <h3>Character Concept</h3>
+                        <p>Digital illustration exploring sci-fi character design and lighting.</p>
+                    </div>
+                </div>
+
+                <!-- Drawing 2 -->
+                <div class="card">
+                    <div class="drawing-image" style="background-color: var(--pastel-green);">
+                        [ Insert Drawing Here ]
+                    </div>
+                    <div class="card-content">
+                        <h3>Urban Sketching</h3>
+                        <p>Ink and watercolor sketch of city architecture.</p>
+                    </div>
+                </div>
+
+                <!-- Drawing 3 -->
+                <div class="card">
+                    <div class="drawing-image" style="background-color: var(--pastel-blue);">
+                        [ Insert Drawing Here ]
+                    </div>
+                    <div class="card-content">
+                        <h3>Vector Illustration</h3>
+                        <p>Flat-style vector art created for a tech blog header.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark CTA Section -->
+    <section id="contact" class="section dark-section">
+        <div class="container">
+            <h2>Let's build something great.</h2>
+            <p>Currently open for freelance opportunities and full-time roles.</p>
+            <a href="mailto:hello@example.com" class="btn btn-primary" style="background: white; color: black; border: none;">Email Me</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Dribbble</a>
+                <a href="#">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

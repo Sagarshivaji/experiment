@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Reusing core styles */
+        :root { --bg-color: #ffffff; --bg-light: #f8f9fa; --text-main: #202124; --text-muted: #5f6368; --primary-blue: #1a73e8; --primary-blue-hover: #1557b0; --border-color: #dadce0; --radius-card: 24px; --radius-btn: 9999px; --font-heading: 'Google Sans', 'Roboto', sans-serif; --font-body: 'Roboto', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: var(--text-main); background-color: var(--bg-color); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 500; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 80px 0; }
+        .bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: var(--radius-btn); font-family: var(--font-heading); font-weight: 500; transition: all 0.2s ease; cursor: pointer; }
+        .btn-outline { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-outline:hover { background-color: #f1f3f4; }
+        
+        .navbar { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+        .logo span { color: var(--primary-blue); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a:not(.btn) { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; transition: color 0.2s; }
+        .nav-links a:not(.btn):hover { color: var(--text-main); }
+
+        /* About Page Specific */
+        .about-hero { padding: 100px 0 60px; text-align: center; }
+        .about-hero h1 { font-size: 4rem; letter-spacing: -1.5px; margin-bottom: 24px; }
+        .about-hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
+        
+        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 40px; }
+        .profile-image { width: 100%; height: 400px; background-color: #e8f0fe; border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); color: #3c4043; border: 1px solid var(--border-color); }
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 24px; letter-spacing: -0.5px; }
+        .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 24px; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+        .skill-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; transition: transform 0.2s; }
+        .skill-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+        .skill-card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--primary-blue); }
+        .skill-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .footer { padding: 64px 0 32px; background-color: var(--bg-light); border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+        .footer-legal { display: flex; gap: 24px; }
+        @media (max-width: 768px) { .about-hero h1 { font-size: 2.8rem; } .split-layout { grid-template-columns: 1fr; } .nav-links { display: none; } .footer-bottom { flex-direction: column; gap: 16px; text-align: center; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">YourName<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" style="color: var(--text-main);">About</a>
+                <a href="research.html">Research</a>
+                <a href="case-study.html">Case Study</a>
+                <a href="#" class="btn btn-outline" style="padding: 8px 20px;">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="about-hero container">
+        <h1>Nice to meet you.</h1>
+        <p>I'm a designer and developer passionate about creating products that solve real-world problems.</p>
+    </header>
+
+    <section class="section">
+        <div class="container split-layout">
+            <div class="profile-image">[ Insert Your Photo Here ]</div>
+            <div class="about-text">
+                <h2>My Story</h2>
+                <p>I started my career as a Frontend Developer, which gave me a deep understanding of how technology is built. However, I quickly realized that building things technically perfect didn't matter if they weren't usable.</p>
+                <p>This led me to transition into UI/UX Design. Today, I bridge the gap between design and code. I use Figma to map out user journeys and design interfaces, and I use React to bring those designs to life.</p>
+                <p>When I'm not designing or coding, you can find me reading about behavioral psychology or conducting user interviews.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 16px;">My Toolkit</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 48px;">The tools and skills I use to bring ideas to life.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Design & Research</h3>
+                    <p>Figma, Maze, Miro, User Interviews, Usability Testing, Wireframing, Prototyping, Design Systems.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Frontend Development</h3>
+                    <p>HTML5, CSS3, JavaScript (React, Next.js), Git/GitHub, Responsive Design, Web Accessibility (WCAG).</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <p>Empathy, Cross-functional Collaboration, Problem Solving, Presentation, Agile Methodology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <div class="footer-legal"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">Dribbble</a></div>
+        </div>
+    </footer>
+</body>
+</html>

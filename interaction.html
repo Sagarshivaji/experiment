@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Multidisciplinary Designer & Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #ffffff; 
+            --bg-light: #f8f9fa; 
+            --text-main: #202124; 
+            --text-muted: #5f6368;
+            --primary-blue: #1a73e8; 
+            --primary-blue-hover: #1557b0; 
+            --border-color: #dadce0;
+            
+            --pastel-blue: #e8f0fe; 
+            --pastel-red: #fce8e6; 
+            --pastel-green: #e6f4ea;
+            --pastel-yellow: #fef7e0;
+            --pastel-purple: #f3e8fd;
+            
+            --radius-card: 24px; 
+            --radius-btn: 9999px;
+            --font-heading: 'Google Sans', 'Roboto', sans-serif; 
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--text-main); 
+            background-color: var(--bg-color); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            
+            /* CUSTOM PENCIL CURSOR */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%235f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>') 0 24, auto;
+        }
+
+        a, button, .btn, .card { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%231a73e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>') 0 24, pointer; }
+
+        #pencil-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 500; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- UTILS & BUTTONS --- */
+        .section { padding: 100px 0; position: relative; }
+        .bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 16px 36px; border-radius: var(--radius-btn);
+            font-family: var(--font-heading); font-weight: 500; font-size: 1.1rem;
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s, box-shadow 0.2s; 
+            position: relative; z-index: 10;
+        }
+        .btn-primary { background-color: var(--primary-blue); color: white; border: 1px solid var(--primary-blue); }
+        .btn-primary:hover { background-color: var(--primary-blue-hover); box-shadow: 0 8px 24px rgba(26,115,232,0.4); }
+        .btn-outline { background-color: rgba(255,255,255,0.8); color: var(--text-main); border: 1px solid var(--border-color); backdrop-filter: blur(10px); }
+        .btn-outline:hover { background-color: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        /* --- NAVBAR --- */
+        .navbar { 
+            position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(16px); border-bottom: 1px solid rgba(218, 220, 224, 0.5); z-index: 100; 
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+        .logo span { color: var(--primary-blue); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a:not(.btn) { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; transition: color 0.2s; position: relative; }
+        .nav-links a:not(.btn):hover { color: var(--text-main); }
+        .nav-links a:not(.btn)::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--primary-blue); transition: width 0.3s ease; }
+        .nav-links a:not(.btn):hover::after { width: 100%; }
+
+        /* --- STANDOUT HERO SECTION --- */
+        .hero { 
+            position: relative; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; 
+            padding: 120px 0 80px; overflow: hidden; background-color: #ffffff; text-align: center;
+        }
+
+        /* Animated Background Blobs */
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; animation: float 10s infinite alternate ease-in-out; }
+        .blob-1 { background-color: #e8f0fe; width: 600px; height: 600px; top: -100px; left: -100px; animation-delay: 0s; }
+        .blob-2 { background-color: #fce8e6; width: 500px; height: 500px; top: 20%; right: -100px; animation-delay: -3s; }
+        .blob-3 { background-color: #fef7e0; width: 400px; height: 400px; bottom: -50px; left: 30%; animation-delay: -6s; }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+        
+        /* Gradient Text */
+        .hero h1 { 
+            font-size: 5rem; line-height: 1.1; letter-spacing: -2.5px; margin-bottom: 24px; 
+            background: linear-gradient(135deg, #202124 30%, #1a73e8 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .hero p { font-size: 1.3rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; }
+
+        /* Floating Hero Visual (Parallax) */
+        .hero-visual-wrapper { margin-top: 60px; position: relative; z-index: 1; perspective: 1000px; }
+        .hero-visual {
+            width: 100%; max-width: 1000px; height: 400px; margin: 0 auto;
+            background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255,255,255,0.8);
+            border-radius: 32px; box-shadow: 0 32px 64px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.02);
+            backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-heading); font-size: 1.5rem; color: #3c4043;
+            transition: transform 0.1s ease-out; /* Smooth parallax */
+            overflow: hidden;
+        }
+        
+        /* Mock UI elements inside hero visual */
+        .mock-ui { width: 90%; height: 80%; border-radius: 16px; background: white; display: flex; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mock-sidebar { width: 25%; background: var(--bg-light); border-right: 1px solid var(--border-color); padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .mock-line { height: 8px; background: #e0e0e0; border-radius: 4px; width: 100%; }
+        .mock-line.short { width: 60%; }
+        .mock-main { flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+        .mock-chart { flex: 1; background: var(--pastel-blue); border-radius: 12px; display: flex; align-items: flex-end; padding: 20px; gap: 10px; }
+        .mock-bar { flex: 1; background: var(--primary-blue); border-radius: 4px 4px 0 0; opacity: 0.8; }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-muted);
+            font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; z-index: 1;
+            animation: bounce 2s infinite; opacity: 0.7;
+        }
+        .scroll-indicator svg { width: 24px; height: 24px; }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        /* --- SHARED SECTION TITLES & GRIDS --- */
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 60px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+
+        /* --- CARDS GENERAL --- */
+        .card { border: 1px solid var(--border-color); border-radius: var(--radius-card); overflow: hidden; background-color: var(--bg-color); transition: box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; transform-style: preserve-3d; will-change: transform; }
+        .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: transparent; }
+        .card-inner { transform: translateZ(30px); display: flex; flex-direction: column; height: 100%; }
+        .card-content { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
+        .tag { font-size: 0.85rem; font-weight: 600; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
+        .card-content h3 { font-size: 1.6rem; margin-bottom: 12px; }
+        .card-content p { color: var(--text-muted); margin-bottom: 24px; font-size: 1rem; flex-grow: 1; }
+        .link-arrow { color: var(--primary-blue); font-weight: 500; font-family: var(--font-heading); font-size: 1.1rem; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s; }
+        .link-arrow:hover { gap: 12px; }
+
+        /* --- IMAGE ZOOM EFFECT --- */
+        .ux-image, .app-image, .poster-image, .drawing-image { width: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.2rem; color: #3c4043; overflow: hidden; position: relative; }
+        .ux-image { height: 280px; }
+        .app-image { height: 300px; background-color: var(--pastel-purple); }
+        .poster-image { height: 450px; }
+        .drawing-image { height: 350px; }
+        .image-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1); }
+        .card:hover .image-content { transform: scale(1.05); }
+
+        .tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+        .tech-tag { background-color: var(--bg-light); border: 1px solid var(--border-color); color: var(--text-muted); padding: 4px 12px; border-radius: var(--radius-btn); font-size: 0.8rem; font-weight: 500; }
+
+        /* --- SCROLL REVEAL --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- DARK CTA SECTION --- */
+        .dark-section { background-color: #050505; color: #ffffff; text-align: center; position: relative; overflow: hidden; padding: 150px 0; }
+        .dark-section .container { position: relative; z-index: 1; }
+        .dark-section h2 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -1px; }
+        .dark-section p { font-size: 1.2rem; color: #9aa0a6; margin-bottom: 40px; }
+
+        /* --- FOOTER --- */
+        .footer { padding: 64px 0 32px; background-color: var(--bg-light); border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+        .footer-legal { display: flex; gap: 24px; }
+        .footer-legal a { transition: color 0.2s; }
+        .footer-legal a:hover { color: var(--primary-blue); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; letter-spacing: -1px; }
+            .hero p { font-size: 1.1rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-visual { height: 250px; }
+            .mock-sidebar { display: none; } /* Hide sidebar on mobile mockup */
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .dark-section h2 { font-size: 2.5rem; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .card { transform: none !important; }
+            #pencil-canvas { display: none; }
+            body { cursor: auto; } 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The canvas that draws the pencil trail -->
+    <canvas id="pencil-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">YourName<span>.</span></a>
+            <div class="nav-links">
+                <a href="#ux">UI/UX</a>
+                <a href="#apps">Apps</a>
+                <a href="#posters">Posters</a>
+                <a href="#art">Art</a>
+                <a href="about.html">About</a>
+                <a href="case-study.html" class="btn btn-outline" style="padding: 8px 20px;">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- STANDOUT HERO SECTION -->
+    <header class="hero">
+        <!-- Animated Background -->
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div class="container hero-content">
+            <h1 class="reveal">I design interfaces, build apps, and create visual art.</h1>
+            <p class="reveal">A multidisciplinary creator blending UI/UX design, frontend development, and graphic illustration into seamless digital experiences.</p>
+            <div class="hero-buttons reveal">
+                <a href="#ux" class="btn btn-primary magnetic">Explore My Work</a>
+                <a href="about.html" class="btn btn-outline magnetic">More About Me</a>
+            </div>
+
+            <!-- Floating Parallax Visual -->
+            <div class="hero-visual-wrapper reveal">
+                <div class="hero-visual" id="hero-parallax">
+                    <!-- Abstract Mock UI to show off skills immediately -->
+                    <div class="mock-ui">
+                        <div class="mock-sidebar">
+                            <div class="mock-line"></div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-line"></div>
+                            <div class="mock-line short"></div>
+                        </div>
+                        <div class="mock-main">
+                            <div style="display: flex; gap: 16px; height: 40px;">
+                                <div class="mock-line" style="width: 30%;"></div>
+                                <div class="mock-line" style="width: 20%;"></div>
+                            </div>
+                            <div class="mock-chart">
+                                <div class="mock-bar" style="height: 40%;"></div>
+                                <div class="mock-bar" style="height: 70%;"></div>
+                                <div class="mock-bar" style="height: 50%;"></div>
+                                <div class="mock-bar" style="height: 90%;"></div>
+                                <div class="mock-bar" style="height: 60%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- 1. UI/UX CASE STUDIES -->
+    <section id="ux" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">UI/UX Case Studies</h2>
+            <p class="section-subtitle reveal">End-to-end design thinking and user-centric product design.</p>
+            
+            <div class="grid-2">
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="ux-image" style="background-color: var(--pastel-blue);">
+                            <div class="image-content">[ Insert Banking App Mockup ]</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Mobile App Design</span>
+                            <h3>Banking App Redesign</h3>
+                            <p>A complete design thinking process overhauling a mobile banking app to reduce cognitive load for young professionals.</p>
+                            <a href="case-study.html" class="link-arrow">Read Case Study <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="ux-image" style="background-color: var(--pastel-green);">
+                            <div class="image-content">[ Insert SaaS Dashboard Mockup ]</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Web Platform Design</span>
+                            <h3>SaaS Analytics Dashboard</h3>
+                            <p>Designing a data-heavy B2B platform to help managers quickly visualize team performance and track KPIs.</p>
+                            <a href="#" class="link-arrow">View Case Study <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. APPLICATIONS DEVELOPED -->
+    <section id="apps" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title reveal">Applications I've Built</h2>
+            <p class="section-subtitle reveal">Bringing designs to life with clean, modern code.</p>
+            
+            <div class="grid-2">
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="app-image">
+                            <div class="image-content">[ Insert App Screenshot ]</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Task Management App</h3>
+                            <p>A full-stack productivity application featuring drag-and-drop kanban boards, user authentication, and real-time database sync.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                            <div style="margin-top: 24px; display: flex; gap: 16px;">
+                                <a href="#" class="link-arrow">Live Demo &nearr;</a>
+                                <a href="#" class="link-arrow" style="color: var(--text-muted);">GitHub &nearr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="app-image" style="background-color: var(--pastel-yellow);">
+                            <div class="image-content">[ Insert App Screenshot ]</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Weather Forecast App</h3>
+                            <p>A mobile-first weather application pulling data from a public API, featuring dynamic backgrounds based on current weather conditions.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <div style="margin-top: 24px; display: flex; gap: 16px;">
+                                <a href="#" class="link-arrow">Live Demo &nearr;</a>
+                                <a href="#" class="link-arrow" style="color: var(--text-muted);">GitHub &nearr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. POSTER DESIGN -->
+    <section id="posters" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Graphic & Poster Design</h2>
+            <p class="section-subtitle reveal">Visual communication, typography, and brand identity.</p>
+            
+            <div class="grid-3">
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="poster-image" style="background-color: var(--pastel-red);">
+                            <div class="image-content">[ Insert Poster Design ]</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Typography</span>
+                            <h3>Music Festival Poster</h3>
+                            <p>Bold, experimental typography for a local indie music festival.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="poster-image" style="background-color: var(--pastel-blue);">
+                            <div class="image-content">[ Insert Poster Design ]</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Branding</span>
+                            <h3>Coffee Shop Campaign</h3>
+                            <p>A minimalist poster series for a local coffee roaster's summer campaign.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="poster-image" style="background-color: var(--pastel-yellow);">
+                            <div class="image-content">[ Insert Poster Design ]</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Editorial</span>
+                            <h3>Magazine Cover Design</h3>
+                            <p>Layout and typography design for a digital design publication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DRAWINGS & ILLUSTRATIONS -->
+    <section id="art" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title reveal">Drawings & Illustration</h2>
+            <p class="section-subtitle reveal">Traditional art, character design, and digital illustration.</p>
+            
+            <div class="grid-3">
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="drawing-image" style="background-color: var(--pastel-purple);">
+                            <div class="image-content">[ Insert Drawing ]</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Character Concept</h3>
+                            <p>Digital illustration exploring sci-fi character design and lighting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="drawing-image" style="background-color: var(--pastel-green);">
+                            <div class="image-content">[ Insert Drawing ]</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Urban Sketching</h3>
+                            <p>Ink and watercolor sketch of city architecture.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reveal tilt">
+                    <div class="card-inner">
+                        <div class="drawing-image" style="background-color: var(--pastel-blue);">
+                            <div class="image-content">[ Insert Drawing ]</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Vector Illustration</h3>
+                            <p>Flat-style vector art created for a tech blog header.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark CTA Section -->
+    <section id="contact" class="section dark-section">
+        <div class="container reveal">
+            <h2>Let's build something great.</h2>
+            <p>Currently open for freelance opportunities and full-time roles.</p>
+            <a href="mailto:hello@example.com" class="btn btn-primary magnetic" style="background: white; color: black; border: none;">Email Me</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Dribbble</a>
+                <a href="#">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- --- JAVASCRIPT FOR INTERACTIONS --- -->
+    <script>
+        // 1. SCROLL REVEAL
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 2. 3D TILT EFFECT ON CARDS
+        const cards = document.querySelectorAll('.tilt');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // 3. MAGNETIC BUTTONS
+        const magneticButtons = document.querySelectorAll('.magnetic');
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        });
+
+        // 4. HERO PARALLAX EFFECT
+        const heroVisual = document.getElementById('hero-parallax');
+        const heroSection = document.querySelector('.hero');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            // Rotate the visual slightly based on mouse position
+            heroVisual.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Reset when mouse leaves
+        heroSection.addEventListener('mouseleave', () => {
+            heroVisual.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            heroVisual.style.transition = 'transform 0.5s ease';
+            setTimeout(() => { heroVisual.style.transition = 'transform 0.1s ease-out'; }, 500);
+        });
+
+        // 5. PENCIL SKETCH INTERACTION
+        const canvas = document.getElementById('pencil-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDrawing) {
+                lastX = e.clientX; lastY = e.clientY; isDrawing = true; return;
+            }
+            drawLine(lastX, lastY, e.clientX, e.clientY);
+            lastX = e.clientX; lastY = e.clientY;
+        });
+
+        let lineWidth = 2;
+        window.addEventListener('mousedown', () => { lineWidth = 4; });
+        window.addEventListener('mouseup', () => { lineWidth = 2; });
+
+        function drawLine(x1, y1, x2, y2) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = 'rgba(60, 64, 67, 0.6)'; 
+            ctx.lineWidth = lineWidth;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+        }
+
+        function fadeOut() {
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'source-over';
+            requestAnimationFrame(fadeOut);
+        }
+        fadeOut();
+    </script>
+</body>
+</html>
