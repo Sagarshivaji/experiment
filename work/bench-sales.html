@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-project="bench-sales">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=../case-study-benchsales.html">
+  <script>window.location.replace("../case-study-benchsales.html");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Revolutionizing Bench Sales Management · Sagar Shivaji</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="theme-benchsales">
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="progressBar"></div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Mobile Menu Overlay & Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a>
+    <a href="../work.html" class="active">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../research.html">Research</a>
+    <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank">Resume ↗</a>
+  </div>
+
+  <!-- Command Palette (⌘K) -->
+  <div class="command-overlay" id="commandOverlay">
+    <div class="command-panel">
+      <div class="command-search-wrapper">
+        <input type="text" class="command-search" placeholder="Search pages, case studies, research..." id="commandInput" autocomplete="off" autofocus>
+        <div class="command-esc">ESC</div>
+      </div>
+      <div class="command-results" id="commandResults">
+        <div class="command-group-title">Pages</div>
+        <div class="command-item" data-action="../index.html">
+          <span class="command-item-left">Home</span>
+          <span class="command-shortcut">⌘H</span>
+        </div>
+        <div class="command-item" data-action="../work.html">
+          <span class="command-item-left">Work</span>
+          <span class="command-shortcut">⌘W</span>
+        </div>
+        <div class="command-item" data-action="../about.html">
+          <span class="command-item-left">About</span>
+          <span class="command-shortcut">⌘A</span>
+        </div>
+        <div class="command-item" data-action="../research.html">
+          <span class="command-item-left">Research</span>
+          <span class="command-shortcut">⌘R</span>
+        </div>
+
+        <div class="command-group-title">Case Studies</div>
+        <div class="command-item" data-action="../work/bench-sales.html">
+          <span class="command-item-left">Bench Sales Platform</span>
+          <span class="command-shortcut">1</span>
+        </div>
+        <div class="command-item" data-action="../work/namma-yatri.html">
+          <span class="command-item-left">Namma Yatri</span>
+          <span class="command-shortcut">2</span>
+        </div>
+        <div class="command-item" data-action="../work/job-pulse.html">
+          <span class="command-item-left">Job Pulse Alert Dashboard</span>
+          <span class="command-shortcut">3</span>
+        </div>
+        <div class="command-item" data-action="../work/gymogram.html">
+          <span class="command-item-left">Gymogram Social Fitness</span>
+          <span class="command-shortcut">4</span>
+        </div>
+        <div class="command-item" data-action="../work/laundry-app.html">
+          <span class="command-item-left">Laundry App</span>
+          <span class="command-shortcut">5</span>
+        </div>
+        <div class="command-item" data-action="../work/lead-generator.html">
+          <span class="command-item-left">Lead Generator</span>
+          <span class="command-shortcut">6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Navigation Bar -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="window.location.href='../index.html'">
+        <span class="logo-text">SAGAR</span>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../work.html" class="active">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../research.html">Research</a>
+        <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="nav-resume-pill">Resume ↗</a>
+        <span class="command-badge" onclick="openCommand()" title="Open Command Palette (⌘K)">⌘K</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CASE STUDY -->
+  <div class="page" id="page-bench-sales">
+    <main class="project-container">
+      <section class="page-section">
+        <a href="../work.html" class="btn btn-back-to-work reveal" style="margin-bottom:32px;">Back to work</a>
+        
+        <div class="reveal">
+          <span class="caption accent-text font-semibold">Shipped · 2026 · AI Product Design</span>
+          <h1 class="heading-1 font-semibold" style="margin:16px 0; max-width:960px; font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: #ffffff;">Revolutionizing Bench Sales Management</h1>
+        </div>
+
+        <!-- Hero Mockup Container (Matches Designer Reference) -->
+        <div class="cs-mockup-frame reveal" style="margin: 32px 0 36px; padding: 16px;">
+          <img src="../images/benchsales-hero-mockup.png" alt="Bench Sales Platform Dashboard Overview" class="project-hero-img">
+        </div>
+
+        <!-- 3-Column Meta Information Grid with Underlines (Matches Designer Reference) -->
+        <div class="project-info-bar reveal">
+          <div class="project-info-item">
+            <span class="info-label">Role</span>
+            <strong>AI Product Designer</strong>
+            <span class="info-subtext">Responsibilities: User Research, Competitive Analysis, Usability Testing</span>
+          </div>
+          <div class="project-info-item">
+            <span class="info-label">Time Line</span>
+            <strong>3 Months</strong>
+            <span class="info-subtext">Team: 12 Team</span>
+          </div>
+          <div class="project-info-item">
+            <span class="info-label">Tools Used</span>
+            <strong>Figma / Zeplin</strong>
+            <span class="info-subtext">Enterprise Design System</span>
+          </div>
+        </div>
+
+        <!-- Project under NDA Banner (Matches Designer Reference) -->
+        <div class="nda-bar reveal">
+          <div class="nda-bar-left">
+            <h3>Project under NDA</h3>
+            <p>Details of my projects cannot be shared publicly, please email to learn more.</p>
+          </div>
+          <a href="mailto:sagarshivaji6644@gmail.com?subject=Bench%20Sales%20Project%20Inquiry" class="nda-send-btn">Send Email</a>
+        </div>
+
+        <!-- ── EXECUTIVE CSR CARD (CHALLENGE / SOLUTION / RESULTS + FIGMA & GIT) ── -->
+        <div class="cs-overview-card reveal" id="csOverviewCard">
+          <div class="cs-overview-top-bar">
+            <div class="cs-overview-links">
+              <a href="https://www.figma.com/design/YJEOLXQvcIge6gQdXBbhkK/Leo-Design-System?node-id=92-2612" target="_blank" rel="noopener noreferrer" class="btn-cs-link">
+                <svg viewBox="0 0 38 57" fill="currentColor"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/><path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"/><path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z"/><path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z"/><path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z"/></svg>
+                <span>Figma Enterprise System ↗</span>
+              </a>
+              <a href="https://github.com/Sagarshivaji" target="_blank" rel="noopener noreferrer" class="btn-cs-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Repository ↗</span>
+              </a>
+            </div>
+            <button type="button" class="btn-read-full-story-trigger" id="btnToggleFullStory" onclick="toggleFullStory()">
+              <span id="btnFullStoryText">Read full story</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="btnFullStoryIcon"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </button>
+          </div>
+          <div class="cs-csr-grid">
+            <!-- 1. Challenge -->
+            <div class="cs-csr-col">
+              <h2 class="cs-csr-section-title">Challenge</h2>
+              <h3 class="cs-csr-subheading">Recruiter chaos: Sprawling spreadsheets &amp; costly consultant bench idle time</h3>
+              <div class="cs-csr-content">
+                <p class="cs-csr-body">Enterprise IT staffing and consulting recruitment agencies relied on chaotic, disconnected spreadsheets to track consultant bench availability, client requisitions, rate cards, and candidate submissions across distributed recruiter pods. Because data was siloed across individual documents, managers had zero real-time visibility into active bench capacity.</p>
+                <p class="cs-csr-body">Recruiters spent 3 to 4 hours every day manually comparing consultant technical resumes against hundreds of inbound client job descriptions arriving across disjointed email threads. This slow manual matching process caused recruiters to routinely miss strict client submission cutoffs and duplicate candidate submissions to the same end-client.</p>
+                <p class="cs-csr-body">Every additional week a specialized consultant spent unplaced on the bench represented thousands of dollars in lost agency revenue, putting severe pressure on recruiter margins and driving operational burnout across staffing teams.</p>
+              </div>
+            </div>
+
+            <!-- 2. Solution -->
+            <div class="cs-csr-col">
+              <h2 class="cs-csr-section-title">Solution</h2>
+              <h3 class="cs-csr-subheading">An enterprise B2B SaaS command center with AI resume parsing &amp; pipeline management</h3>
+              <div class="cs-csr-content">
+                <p class="cs-csr-body">Architected Bench Sales, a centralized enterprise SaaS platform designed to automate and streamline the complete consultant placement lifecycle. At its core is an Intelligent JD Inbox that automatically parses inbound requirement emails, extracts required skills, years of experience, and location constraints, and scores them against available bench profiles using AI-driven matching algorithms.</p>
+                <p class="cs-csr-body">Engineered an interactive consultant bench dashboard featuring real-time availability filters, rate card calculators, and automated resume formatting tools that allow recruiters to generate client-ready candidate profiles with a single click.</p>
+                <p class="cs-csr-body">Built a unified client submission Kanban pipeline that visualizes candidate interview stages (Submitted → Shortlisted → Interview Scheduled → Offered → Placed) with automated audit logging to prevent duplicate profile submissions across recruiters.</p>
+              </div>
+            </div>
+
+            <!-- 3. Results -->
+            <div class="cs-csr-col">
+              <h2 class="cs-csr-section-title">Results</h2>
+              <h3 class="cs-csr-subheading">60% faster recruiter turnaround, 40% bench time reduction &amp; zero duplicate submissions</h3>
+              <div class="cs-csr-content">
+                <p class="cs-csr-body">Recruiter turnaround time from receiving a client requisition to submitting a qualified consultant was <strong>reduced by 60%</strong>, shrinking an average 6-hour manual search down to under 45 minutes.</p>
+                <p class="cs-csr-body">Across pilot staffing agencies managing <strong>500+ active enterprise consultants</strong>, average consultant bench idle time fell by <strong>40%</strong>, while automated submission tracking eliminated 100% of duplicate submission conflicts and reduced profile formatting errors by 35%.</p>
+                <div class="cs-csr-highlight-box">
+                  <strong>Enterprise Impact:</strong> Transforming manual spreadsheet tracking into an intelligent automated dashboard helped agencies accelerate placement velocity and maximize billable consultant utilization.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FULL CASE STUDY WRAPPER (Shown only when user clicks 'Read full story') ── -->
+        <div class="full-case-study-wrapper" id="fullCaseStudy">
+
+        <!-- Case Study Layout with Sticky Sidebar Navigation -->
+        <div class="project-layout">
+          <!-- Sticky Sidebar Navigation -->
+          <nav class="sticky-nav" id="stickyNav">
+            <div class="sticky-nav-header">Contents</div>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#challenge">The Challenge</a>
+            <a href="#solution">The Solution</a>
+            <a href="#jdinbox">Intelligent JD Inbox</a>
+            <a href="#campaigns">Campaign Outreach</a>
+            <a href="#results">Results & Impact</a>
+          </nav>
+          
+          <!-- Case Study Content Sections -->
+          <div class="project-content-block">
+            <!-- Section: Overview -->
+            <div id="overview" class="project-content-section reveal">
+              <p class="case-headline-lead">How Bench sales Reduced Bench Time by 40% through Intelligent Automation</p>
+              <h2 class="case-section-title">Overview</h2>
+              <div class="project-summary-text">
+                <p class="body-large text-primary" style="margin-bottom: 16px;">Bench Sales is an enterprise staffing platform designed to help recruiters manage consultant availability, client requirements, job submissions, and placement workflows from a centralized dashboard.</p>
+                <p class="body-base text-secondary">The goal was to simplify complex recruitment operations by reducing manual effort, improving consultant visibility, and enabling recruiters to make faster, data-driven placement decisions through an intuitive and scalable automated workflow.</p>
+              </div>
+            </div>
+
+            <!-- Section: The Challenge -->
+            <div id="challenge" class="project-content-section reveal">
+              <h2 class="case-section-title">The Challenge</h2>
+              <p class="body-base text-secondary" style="margin-bottom:20px;">
+                Traditional bench sales are plagued by manual effort, missed job description (JD) and fragmented communication. Recruiters spent hours every day switching across systems instead of placing talent:
+              </p>
+              <div style="display: grid; gap: 16px; margin: 24px 0;">
+                <div style="background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.12); padding: 20px 24px;">
+                  <h4 style="color: #ffffff; margin-bottom: 6px; font-weight: 700; font-size: 16px;">Information Overload</h4>
+                  <p class="body-base text-secondary" style="margin: 0;">Sifting through hundreds of vendor emails and disparate portals daily to locate relevant client job descriptions.</p>
+                </div>
+                <div style="background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.12); padding: 20px 24px;">
+                  <h4 style="color: #ffffff; margin-bottom: 6px; font-weight: 700; font-size: 16px;">Low Visibility & Tracking</h4>
+                  <p class="body-base text-secondary" style="margin: 0;">Lack of a centralized history for candidate submissions, causing duplicate pitches, missed feedback, and lost placements.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section: The Solution -->
+            <div id="solution" class="project-content-section reveal">
+              <h2 class="case-section-title">The Solution</h2>
+              <h3 class="case-section-subtitle">An All-in-One Bench Ecosystem</h3>
+              <p class="body-base text-secondary" style="margin-bottom:16px;">
+                Our platform was engineered to transform the bench sales lifecycle from a manual grind into a high-velocity, automated engine.
+              </p>
+              <p class="body-base text-secondary" style="margin-bottom:20px;">
+                The platform consolidates recruiter operations into four core workflows: consultant profile tracking, automated requirement parsing, pipeline stages, and intelligent candidate matching.
+              </p>
+            </div>
+
+            <!-- Section: Intelligent JD Inbox & Matching -->
+            <div id="jdinbox" class="project-content-section reveal">
+              <h2 class="case-section-title">Intelligent JD Inbox & Matching</h2>
+              <p class="body-base text-secondary" style="margin-bottom:20px;">
+                An AI-powered JD inbox that automatically aggregates and parses incoming job descriptions, extracts critical requirements, and matches them against available bench consultants using smart filters and instant compatibility scoring.
+              </p>
+              <div class="cs-mockup-frame">
+                <img src="../images/benchsales-jd-inbox.png" alt="Intelligent JD Inbox and Matching Annotated UI" style="width: 100%; height: auto; display: block;">
+              </div>
+            </div>
+
+            <!-- Section: Automated Campaign Management -->
+            <div id="campaigns" class="project-content-section reveal">
+              <h2 class="case-section-title">Automated Campaign Management</h2>
+              <p class="body-base text-secondary" style="margin-bottom:20px;">
+                The Campaign Overview and Email Marketing modules allow sales teams to run targeted outreach at scale with automated sequence follow-ups, open tracking, and response analytics.
+              </p>
+              <div class="cs-mockup-frame">
+                <img src="../images/benchsales-campaign.png" alt="Automated Campaign Management Annotated UI" style="width: 100%; height: auto; display: block;">
+              </div>
+            </div>
+
+            <!-- Section: Results & Impact -->
+            <div id="results" class="project-content-section reveal">
+              <h2 class="case-section-title">Results & Impact</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                The redesigned Bench Sales platform established a scalable foundation for staffing operations by bringing consultant management, requirement tracking, and submission workflows into a single, cohesive experience.
+              </p>
+              <div class="project-section-grid" style="margin-top: 0;">
+                <div class="metric-result-card" style="background: #000000; border: 1px solid rgba(255, 255, 255, 0.14); padding: 32px; text-align: center;">
+                  <div class="insight-stat font-bold" style="font-size: 3.5rem; color: #ffffff; margin-bottom: 8px; font-family: var(--font-display);">40%</div>
+                  <p class="small text-secondary font-medium" style="font-size: 14px;">Reduced Bench Time through Intelligent Automation</p>
+                </div>
+                <div class="metric-result-card" style="background: #000000; border: 1px solid rgba(255, 255, 255, 0.14); padding: 32px; text-align: center;">
+                  <div class="insight-stat font-bold" style="font-size: 3.5rem; color: #ffffff; margin-bottom: 8px; font-family: var(--font-display);">4</div>
+                  <p class="small text-secondary font-medium" style="font-size: 14px;">Core Recruiter Workflows Redesigned</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confidentiality Disclaimer -->
+            <div class="cs-note-banner">
+              <strong>Note:</strong> Due to confidentiality agreements, I'm unable to share working link/details of the project. The following case study highlights our approach towards architecture to demonstrate my design approach, thinking process, and contributions.
+            </div>
+          </div>
+        </div>
+        </div><!-- /fullCaseStudy -->
+      </section>
+    </main>
+
+    <!-- Minimal Black Footer (Matches Designer Reference) -->
+    <footer class="cs-minimal-footer">
+      <div class="cs-minimal-footer-inner">
+        <a href="../index.html" class="footer-logo">SAGAR</a>
+        <a href="mailto:sagarshivaji6644@gmail.com" class="footer-email">sagarshivaji6644@gmail.com</a>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/sagar-shivaji-090904262/" target="_blank">LINKEDIN</a>
+          <a href="https://www.behance.net/sagarshivaji" target="_blank">BEHANCE</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../script.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/jsid=G-1BDRFHDY8E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1BDRFHDY8E');
+  </script>
+</body>
+</html>

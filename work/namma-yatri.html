@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-project="namma-yatri">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=../case-study.html">
+  <script>window.location.replace("../case-study.html");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Frictionless Civic Complaint · Namma Yatri · Sagar Shivaji</title>
+  <meta name="description" content="A simpler, safer and more transparent way to report civic issues — a Namma Yatri design by Sagar Shivaji.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* ============================================================
+       CASE STUDY — NAMMA YATRI (CIVIC TECH GREEN)
+       ============================================================ */
+    :root {
+      --ny-accent: #10B981;
+      --ny-accent-light: rgba(16, 185, 129, 0.15);
+      --ny-success: #10B981;
+    }
+
+    .cs-body {
+      background: #08080c !important;
+      color: #ffffff !important;
+      padding-top: 100px;
+    }
+
+    .cs-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px 120px;
+    }
+
+    /* Back link */
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #ffffff !important;
+      border-radius: 0 !important;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .cs-back:hover { 
+      background: #e2e8f0 !important; 
+      color: #000000 !important; 
+      transform: translateY(-1px); 
+    }
+
+    /* Hero */
+    .cs-hero {
+      padding: 8px 0 12px;
+      margin-bottom: 12px;
+    }
+    .cs-hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ny-accent);
+      background: var(--ny-accent-light);
+      padding: 6px 14px;
+       : 20px;
+      margin-bottom: 24px;
+    }
+    .cs-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      max-width: 900px;
+      color: var(--text-primary);
+    }
+    .cs-hero-sub {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 28px;
+    }
+    .cs-hero-image {
+      width: 100%;
+       : 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .cs-hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Info bar */
+    .cs-info-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+    .cs-info-item span {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-tertiary);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .cs-info-item strong {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Layout */
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-top: 0;
+    }
+
+    /* Sticky sidebar nav */
+    .cs-nav {
+      position: sticky;
+      top: 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+      padding: 12px 10px;
+      background: rgba(11, 4, 22, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+    .cs-nav::-webkit-scrollbar {
+      width: 4px;
+    }
+    .cs-nav::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .cs-nav::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+    .cs-nav a {
+      display: flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.72);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      background: transparent;
+    }
+    .cs-nav a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+    .cs-nav a.active {
+      color: #000000 !important;
+      background: #ffffff !important;
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Content */
+    .cs-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cs-section {
+      scroll-margin-top: 100px;
+      margin-top: 0;
+    }
+    .cs-section h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    /* Cards */
+    .cs-card {
+      background: #101018 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 14px;
+      padding: 24px;
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    .cs-card-accent { border-color: var(--ny-accent) !important; }
+
+    /* Grid helpers */
+    .cs-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cs-grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .cs-grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+
+    /* Full-width image */
+    .cs-img-block {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 24px;
+    }
+    .cs-img-block img { width: 100%; height: auto; display: block; }
+
+    /* Compare table */
+    .cs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #101018;
+    }
+    .cs-table th, .cs-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      vertical-align: top;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .cs-table thead th {
+      background: #141422;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .cs-table thead th:last-child { color: var(--ny-accent); }
+    .cs-table tbody tr:last-child td { border-bottom: none; }
+    .cs-table tbody td:first-child { font-weight: 600; }
+
+    /* Highlight banner */
+    .cs-banner {
+      background: var(--ny-accent-light);
+      border: 1px solid var(--ny-accent);
+       : 14px;
+      padding: 28px;
+      text-align: center;
+    }
+    .cs-banner-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ny-accent);
+      margin-bottom: 10px;
+    }
+    .cs-banner-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    /* Flow chips */
+    .cs-flow-chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .cs-chip {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+       : 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .cs-chip-accent {
+      border-color: var(--ny-accent);
+      color: var(--ny-accent);
+    }
+    .cs-chip-success {
+      border-color: var(--ny-success);
+    }
+    .cs-arrow { color: var(--text-tertiary); font-size: 1rem; }
+
+    /* Accordion */
+    .cs-accordion-item {
+      border: 1px solid var(--border);
+       : 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: var(--surface);
+    }
+    .cs-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.93rem;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .cs-accordion-header:hover { background: var(--bg); }
+    .cs-accordion-header .material-icons {
+      font-size: 1.1rem;
+      transition: transform 0.25s ease;
+      color: var(--text-tertiary);
+    }
+    .cs-accordion-item.open .cs-accordion-header .material-icons {
+      transform: rotate(180deg);
+      color: var(--ny-accent);
+    }
+    .cs-accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 20px;
+    }
+    .cs-accordion-item.open .cs-accordion-body {
+      max-height: 800px;
+      padding: 0 20px 20px 20px;
+    }
+
+    /* Phone mockup grid */
+    .cs-screens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 16px;
+    }
+    .cs-screen-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+       : 14px;
+      overflow: hidden;
+    }
+    .cs-screen-card img {
+      width: 100%;
+      aspect-ratio: 9/19;
+      object-fit: cover;
+      display: block;
+    }
+    .cs-screen-caption {
+      padding: 10px 12px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    /* Principle cards with large number */
+    .cs-principle-num {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--ny-accent);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Timeline-style tracking status */
+    .cs-track-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* Quote block */
+    .cs-quote {
+      border-left: 3px solid var(--ny-accent);
+       : 0 14px 14px 0;
+      padding: 24px 28px;
+      background: var(--surface);
+      font-style: italic;
+      font-size: 1.06rem;
+      line-height: 1.7;
+    }
+
+    /* Summary closing card */
+    .cs-closing {
+      border: 1px solid var(--ny-accent);
+       : 16px;
+      padding: 36px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .cs-closing-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .cs-closing-tagline { font-size: 0.95rem; font-weight: 600; color: var(--ny-accent); margin-bottom: 12px; }
+    .cs-closing-flow { font-size: 0.95rem; font-weight: 700; }
+
+    /* CTA buttons */
+    .cs-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    .cs-btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--ny-accent);
+      color: #fff;
+       : 10px;
+      font-weight: 700;
+      font-size: 0.93rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cs-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .cs-btn-secondary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+       : 10px;
+      font-weight: 600;
+      font-size: 0.93rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cs-btn-secondary:hover { background: var(--surface); transform: translateY(-1px); }
+
+    /* All screens banner */
+    .cs-all-screens {
+      width: 100%;
+       : 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .cs-all-screens img { width: 100%; height: auto; display: block; }
+
+    /* Wireframes grid */
+    .cs-wire-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .cs-wire-grid img {
+      width: 100%;
+       : 12px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cs-layout { grid-template-columns: 1fr; gap: 32px; }
+      .cs-nav {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .cs-nav a { border-left: none; padding: 6px 10px; font-size: 0.76rem; }
+      .cs-grid-2 { grid-template-columns: 1fr; }
+      .cs-hero h1 { font-size: 1.9rem; }
+    }
+    @media (max-width: 640px) {
+      .cs-container { padding: 0 20px 80px; }
+      .cs-screens-grid { grid-template-columns: repeat(2, 1fr); }
+      .cs-grid-auto { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .cs-screens-grid { grid-template-columns: 1fr; }
+      .cs-grid-auto { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="cs-body theme-nammayatri">
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="progressBar"></div>
+
+  <!-- Mobile Menu Overlay & Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a>
+    <a href="../work.html" class="active">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../research.html">Research</a>
+    <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank">Resume ↗</a>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="window.location.href='../index.html'">
+        <span class="logo-text">SAGAR</span>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../work.html" class="active">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../research.html">Research</a>
+        <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="nav-resume-pill">Resume ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div class="cs-container">
+
+    <!-- Back link -->
+    <a href="../work.html" class="cs-back">Back to work</a>
+
+    <!-- ── HERO ── -->
+    <header class="cs-hero reveal">
+      <span class="caption accent-text font-semibold" style="color: var(--ny-accent);">Product Design · 2026</span>
+      <h1 class="heading-1 font-semibold" style="margin: 16px 0 18px; max-width: 900px;">Frictionless Civic Complaint</h1>
+      <p class="cs-hero-sub body-large text-secondary">
+        A simpler, safer and more transparent way to report civic issues — removing administrative complexity from the citizen and moving it into the system.
+      </p>
+    </header>
+
+    <!-- Info bar -->
+    <div class="project-info-bar reveal">
+      <div class="project-info-item">
+        <span class="small text-tertiary">Role</span>
+        <strong class="text-primary">Product Designer</strong>
+      </div>
+      <div class="project-info-item">
+        <span class="small text-tertiary">Industry</span>
+        <strong class="text-primary">Civic Tech &amp; Urban Services</strong>
+      </div>
+      <div class="project-info-item">
+        <span class="small text-tertiary">Platform</span>
+        <strong class="text-primary">Mobile (iOS / Android)</strong>
+      </div>
+      <div class="project-info-item">
+        <span class="small text-tertiary">Reading time</span>
+        <strong class="text-primary">5 min</strong>
+      </div>
+    </div>
+
+    <div class="cs-hero-image reveal">
+      <img src="../images/civic.png" alt="Frictionless Civic Complaint hero mockup">
+    </div>
+
+    <!-- ── EXECUTIVE CSR CARD (CHALLENGE / SOLUTION / RESULTS + FIGMA & GIT) ── -->
+    <div class="cs-overview-card reveal" id="csOverviewCard">
+      <div class="cs-overview-top-bar">
+        <div class="cs-overview-links">
+          <a href="https://www.figma.com/design/YJEOLXQvcIge6gQdXBbhkK/Leo-Design-System?node-id=92-2612&t=RSgN1z54vXmWMpMn-1" target="_blank" rel="noopener noreferrer" class="btn-cs-link">
+            <svg viewBox="0 0 38 57" fill="currentColor"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/><path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"/><path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z"/><path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z"/><path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z"/></svg>
+            <span>Figma Prototype / File ↗</span>
+          </a>
+          <a href="https://github.com/Sagarshivaji" target="_blank" rel="noopener noreferrer" class="btn-cs-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository ↗</span>
+          </a>
+        </div>
+        <button type="button" class="btn-read-full-story-trigger" id="btnToggleFullStory" onclick="toggleFullStory()">
+          <span id="btnFullStoryText">Read full story</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="btnFullStoryIcon"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+        </button>
+      </div>
+      <div class="cs-csr-grid">
+        <!-- 1. Challenge -->
+        <div class="cs-csr-col">
+          <h2 class="cs-csr-section-title">Challenge</h2>
+          <h3 class="cs-csr-subheading">High abandonment &amp; citizen distrust in legacy municipal complaint reporting</h3>
+          <div class="cs-csr-content">
+            <p class="cs-csr-body">Filing civic grievances in legacy municipal portals required navigating convoluted department hierarchies, deciphering administrative jargon, and filling out 14+ mandatory text fields just to report a hazardous pothole or broken streetlight. Citizens were expected to know their municipal ward number and jurisdictional boundaries before even submitting an issue.</p>
+            <p class="cs-csr-body">Due to a complete lack of tracking transparency and no automated verification, citizens experienced an unaccountable "black box" where complaints languished without acknowledgement. This resulted in an alarming <strong>82% abandonment rate</strong> during online reporting and pervasive civic disengagement across the municipality.</p>
+            <p class="cs-csr-body">Field interviews revealed that when public infrastructure repairs went undocumented, citizens turned to social media out of frustration, placing unnecessary reputational strain on municipal authorities while leaving grassroots issues unresolved on the ground.</p>
+          </div>
+        </div>
+
+        <!-- 2. Solution -->
+        <div class="cs-csr-col">
+          <h2 class="cs-csr-section-title">Solution</h2>
+          <h3 class="cs-csr-subheading">A frictionless 4-step mobile flow with automated municipal grid routing</h3>
+          <div class="cs-csr-content">
+            <p class="cs-csr-body">Designed a progressive-disclosure 4-step mobile flow (Report → Pin Location → Capture Details → Instant Submit) that shifts administrative complexity from the citizen to the underlying system. Instead of forcing manual ward selection, the interface leverages GPS auto-detection and reverse-geocoding to pinpoint exact municipal boundaries automatically.</p>
+            <p class="cs-csr-body">To streamline issue intake, the system provides visual category cards (Roads, Waste, Water, Streetlights) and smart image compression for photo uploads, allowing citizens to capture and submit verifiable evidence directly from the street in under 45 seconds.</p>
+            <p class="cs-csr-body">Every submission triggers an automated municipal dispatch ticket linked to the jurisdictional ward engineer, generating live milestone alerts (Assigned → In Progress → Resolved with Proof Photo) via SMS and an in-app tracking dashboard, establishing closed-loop accountability.</p>
+          </div>
+        </div>
+
+        <!-- 3. Results -->
+        <div class="cs-csr-col">
+          <h2 class="cs-csr-section-title">Results</h2>
+          <h3 class="cs-csr-subheading">83% reduction in reporting time &amp; +68% surge in verified submissions</h3>
+          <div class="cs-csr-content">
+            <p class="cs-csr-body">Average issue submission time was slashed from <strong>4.5 minutes down to just 45 seconds</strong>. This elimination of cognitive friction drove a <strong>+68% increase in completed civic submissions</strong> across pilot wards, with over 74% of users filing reports on their first visit without customer assistance.</p>
+            <p class="cs-csr-body">Automated GPS grid routing eradicated misrouted tickets entirely, eliminating 100% of manual department triage overhead and accelerating average municipal repair assignment from 3.2 days down to less than 4 hours.</p>
+            <div class="cs-csr-highlight-box">
+              <strong>Key Outcome:</strong> 88% overall citizen satisfaction score in usability trials, proving that removing bureaucratic hurdles from the interface transforms passive citizens into active contributors to city infrastructure.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FULL CASE STUDY WRAPPER (Shown only when user clicks 'Read full story') ── -->
+    <div class="full-case-study-wrapper" id="fullCaseStudy">
+
+    <!-- ── TWO-COLUMN LAYOUT ── -->
+    <div class="cs-layout">
+
+      <!-- Sticky sidebar nav -->
+      <nav class="cs-nav" id="csNav">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#challenge">Challenge</a>
+        <a href="#observed">What I Observed</a>
+        <a href="#direction">Design Direction</a>
+        <a href="#wireframes">Wireframes</a>
+        <a href="#flow">Core Flow</a>
+        <a href="#decisions">Key Decisions</a>
+        <a href="#final-screens">Final Screens</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#mvp">MVP vs Future</a>
+        <a href="#tradeoffs">Assumptions</a>
+        <a href="#metrics">Success Metrics</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#reflection">Reflection</a>
+      </nav>
+
+      <!-- Content -->
+      <div class="cs-content">
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="cs-section">
+          <h2>Overview</h2>
+          <div class="cs-img-block" style="margin-bottom:28px;">
+            <img src="namma-yatri/images/storyboard.png" alt="Storyboard overview">
+          </div>
+          <p style="font-size:1.05rem; line-height:1.75; margin-bottom:16px; font-weight:500;">
+            Citizens encounter civic issues every day — potholes, garbage dumping, broken streetlights, water leaks and damaged footpaths. Reporting them, however, can feel like completing a government form rather than performing a simple civic action.
+          </p>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75;">
+            This project redesigns the civic reporting experience around a single principle: <strong style="color:var(--text-primary);">ask the citizen only what they know, and let the system handle the administrative complexity.</strong> The result is a reporting flow that takes seconds, a tracking model that separates submission from verification, and a public layer that shows civic progress without exposing the people who reported it.
+          </p>
+        </section>
+
+        <!-- CHALLENGE -->
+        <section id="challenge" class="cs-section">
+          <h2>The Challenge</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            Citizens need a simple way to report issues such as potholes, garbage, water leaks, and broken streetlights. My focus was to design a flow where users can clearly and quickly:
+          </p>
+          <div class="cs-banner cs-card-accent" style="margin-bottom:20px;">
+            <p class="cs-banner-title">Report → Submit → Track → Resolve</p>
+          </div>
+          <div class="cs-card" style="display:flex; align-items:flex-start; gap:14px; padding:20px 22px;">
+            <span class="material-icons" style="font-size:1.5rem; color:var(--ny-accent); min-width:28px; margin-top:2px;">psychology</span>
+            <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
+              <strong style="color:var(--text-primary);">The problem I focused on:</strong> Users should always know where to start, what to do next, and what happens after submitting.
+            </p>
+          </div>
+        </section>
+
+        <!-- WHAT I OBSERVED -->
+        <section id="observed" class="cs-section">
+          <h2>What I Observed</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            From the existing apps I reviewed, I observed a consistent set of friction points that appear before a citizen ever reaches the actual complaint flow.
+          </p>
+          <div class="cs-img-block">
+            <img src="namma-yatri/images/competitors.png" alt="Competitor analysis">
+          </div>
+          <div style="overflow-x:auto; margin-bottom:20px;">
+            <table class="cs-table">
+              <thead>
+                <tr>
+                  <th>Observation</th>
+                  <th>User problem</th>
+                  <th>Opportunity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Too many options</td>
+                  <td style="color:var(--text-secondary);">"Where do I start?"</td>
+                  <td style="color:var(--ny-accent); font-weight:600;">Strong primary CTA</td>
+                </tr>
+                <tr>
+                  <td>No progress indicator</td>
+                  <td style="color:var(--text-secondary);">"What comes next?"</td>
+                  <td style="color:var(--ny-accent); font-weight:600;">Stepper</td>
+                </tr>
+                <tr>
+                  <td>Unclear post-submission</td>
+                  <td style="color:var(--text-secondary);">"What happens now?"</td>
+                  <td style="color:var(--ny-accent); font-weight:600;">Tracking</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cs-banner">
+            <p class="cs-banner-label">My takeaway</p>
+            <p style="font-size:1.05rem; font-weight:700;">The problem wasn't only reporting. It was the lack of direction throughout the journey.</p>
+          </div>
+        </section>
+
+        <!-- DESIGN DIRECTION -->
+        <section id="direction" class="cs-section">
+          <h2>Design Direction</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            Instead of building a long complaint form, I broke the experience into small, understandable steps.
+          </p>
+          <div class="cs-img-block">
+            <img src="namma-yatri/images/steps.png" alt="Design direction steps">
+          </div>
+          <div class="cs-grid-auto">
+            <div class="cs-card">
+              <span class="cs-principle-num">01</span>
+              <h4 style="margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;">Guide</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">Make the next action obvious.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-principle-num">02</span>
+              <h4 style="margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;">Simplify</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">Ask only for essential information.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-principle-num">03</span>
+              <h4 style="margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;">Use the system</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">Use location and visual inputs wherever possible.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-principle-num">04</span>
+              <h4 style="margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;">Build confidence</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">Show users what they're submitting.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-principle-num">05</span>
+              <h4 style="margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;">Keep them informed</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">Continue the experience after submission.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- WIREFRAMES -->
+        <section id="wireframes" class="cs-section">
+          <h2>Wireframes</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:24px;">
+            Low-fidelity wireframes exploring the structure and layout before moving to high-fidelity screens.
+          </p>
+          <div class="cs-wire-grid">
+            <img src="namma-yatri/images/wireframe 1-3.png" alt="Wireframes screens 1-3">
+            <img src="namma-yatri/images/wireframe 4-6.png" alt="Wireframes screens 4-6">
+            <img src="namma-yatri/images/wireframe 7-9.png" alt="Wireframes screens 7-9">
+          </div>
+          <div class="cs-card" style="display:flex; align-items:flex-start; gap:14px; padding:20px 22px;">
+            <span class="material-icons" style="font-size:1.5rem; color:var(--ny-accent); min-width:28px; margin-top:2px;">draw</span>
+            <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
+              <strong style="color:var(--text-primary);">Story-driven approach:</strong> Each wireframe set maps to a stage — Home & Location, Issue Type & Details, and Review & Success — keeping the journey predictable.
+            </p>
+          </div>
+          <div style="margin-top:20px;">
+            <div class="cs-img-block" style="margin-bottom:0;">
+              <img src="namma-yatri/images/story.png" alt="User story">
+            </div>
+          </div>
+        </section>
+
+        <!-- CORE FLOW -->
+        <section id="flow" class="cs-section">
+          <h2>Core Flow</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:24px;">The full journey — from opening the app to resolution.</p>
+          <div class="cs-img-block">
+            <img src="namma-yatri/images/userflow.png" alt="User flow diagram">
+          </div>
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>Why this order?</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75;">
+                <strong>Location → What happened → Evidence → Confirmation → Tracking.</strong> The issue exists at a physical location, so location comes first. Then the citizen describes what happened and provides evidence. Review builds confidence before submission, and tracking continues the experience after.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- KEY DECISIONS -->
+        <section id="decisions" class="cs-section">
+          <h2>Key Design Decisions</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            Expand each decision to understand the reasoning behind the design.
+          </p>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>01. Location First</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:10px;">
+                <strong style="color:var(--text-primary);">Why?</strong> The issue exists at a physical location, so I wanted the system to handle location detection instead of making users manually explain where they are.
+              </p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75;">
+                <strong style="color:var(--text-primary);">Design decision:</strong> Current location + change/search location.
+              </p>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>02. Stepper</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:10px;">
+                <strong style="color:var(--text-primary);">Why?</strong> I wanted users to always know where they are, what they've completed, and what's next.
+              </p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75;">
+                <strong style="color:var(--text-primary);">Design decision:</strong> Location → Issue → Details → Review
+              </p>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>03. Visual Issue Cards</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:12px;">
+                <strong style="color:var(--text-primary);">Why?</strong> Cards make issue types easier to scan, while icons help users recognize them quickly.
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                <span class="cs-chip">Pothole</span>
+                <span class="cs-chip">Garbage</span>
+                <span class="cs-chip">Water Leak</span>
+                <span class="cs-chip">Streetlight</span>
+                <span class="cs-chip">Footpath</span>
+                <span class="cs-chip">Sewage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>04. Photo First, Description Optional</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:10px;">
+                <strong style="color:var(--text-primary);">Why?</strong> A photo can communicate the problem clearly, while not every user may be comfortable writing a detailed description.
+              </p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75;">
+                <strong style="color:var(--text-primary);">Design decision:</strong> Photo = important · Description = optional
+              </p>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>05. Review Before Submit</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:10px;">
+                <strong style="color:var(--text-primary);">Why?</strong> I wanted users to see exactly what they were going to submit and correct anything before sending the report.
+              </p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75;">
+                <strong style="color:var(--text-primary);">Design decision:</strong> Issue + Location + Photo + Description + Edit
+              </p>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>06. Privacy Reassurance</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:10px;">
+                <strong style="color:var(--text-primary);">Why?</strong> Some users may hesitate to report an issue if they're concerned about being identified.
+              </p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75;">
+                <strong style="color:var(--text-primary);">Design decision:</strong> Provide privacy reassurance at the point where the user is about to submit.
+              </p>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>07. Report ID + Tracking</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:10px;">
+                <strong style="color:var(--text-primary);">Why?</strong> The experience shouldn't end after submission. Users may want to know: Was it verified? Has work started? Is it completed?
+              </p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; margin-bottom:12px;">
+                <strong style="color:var(--text-primary);">Tracking states:</strong>
+              </p>
+              <div class="cs-track-row">
+                <span class="cs-chip">Pending</span>
+                <span class="cs-arrow">→</span>
+                <span class="cs-chip">Under Review</span>
+                <span class="cs-arrow">→</span>
+                <span class="cs-chip cs-chip-accent">In Progress</span>
+                <span class="cs-arrow">→</span>
+                <span class="cs-chip cs-chip-success">Resolved</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINAL SCREENS -->
+        <section id="final-screens" class="cs-section">
+          <h2>Final Screens</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:24px;">
+            High-fidelity UI — the polished experience ready for handoff.
+          </p>
+          
+          <div class="cs-screens-grid">
+            <div class="cs-screen-card">
+              <img src="namma-yatri/images/1. Home (High-Fidelity).png" alt="Home screen">
+              <div class="cs-screen-caption">Home — Report an issue</div>
+            </div>
+            <div class="cs-screen-card">
+              <img src="namma-yatri/images/2. Location (High-Fidelity).png" alt="Location screen">
+              <div class="cs-screen-caption">Location selection</div>
+            </div>
+            <div class="cs-screen-card">
+              <img src="namma-yatri/images/3. Issue Type (High-Fidelity).png" alt="Issue type screen">
+              <div class="cs-screen-caption">Select issue type</div>
+            </div>
+            <div class="cs-screen-card">
+              <img src="namma-yatri/images/4. Add Details (High-Fidelity).png" alt="Add details screen">
+              <div class="cs-screen-caption">Add details — photo &amp; description</div>
+            </div>
+            <div class="cs-screen-card">
+              <img src="namma-yatri/images/5. Review &amp; Submit (High-Fidelity).png" alt="Review and submit screen">
+              <div class="cs-screen-caption">Review &amp; submit</div>
+            </div>
+            <div class="cs-screen-card">
+              <img src="namma-yatri/images/6. Submission Success (High-Fidelity).png" alt="Submission success screen">
+              <div class="cs-screen-caption">Report successfully received</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRODUCT ARCHITECTURE -->
+        <section id="architecture" class="cs-section">
+          <h2>Product Architecture</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            The product is structured into four core modules.
+          </p>
+          <div class="cs-grid-2">
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.8rem; color:var(--ny-accent); display:block; margin-bottom:10px;">campaign</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:12px;">Reporting Module</h4>
+              <ul style="display:flex; flex-direction:column; gap:7px;">
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Location</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Issue Type</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Details</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Review</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Submit</li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.8rem; color:var(--ny-accent); display:block; margin-bottom:10px;">timeline</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:12px;">Tracking Module</h4>
+              <ul style="display:flex; flex-direction:column; gap:7px;">
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Report ID</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Status</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Timeline</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Resolution</li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.8rem; color:var(--ny-accent); display:block; margin-bottom:10px;">groups</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:12px;">Community Module</h4>
+              <ul style="display:flex; flex-direction:column; gap:7px;">
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Area reports</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Nearby issues</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Duplicate awareness</li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.8rem; color:var(--ny-accent); display:block; margin-bottom:10px;">help_outline</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:12px;">Support Module</h4>
+              <ul style="display:flex; flex-direction:column; gap:7px;">
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Help</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• Privacy</li>
+                <li style="font-size:0.85rem; color:var(--text-secondary);">• FAQs</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- MVP vs FUTURE -->
+        <section id="mvp" class="cs-section">
+          <h2>MVP vs Future</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            A clear split between what ships now and what's planned for later.
+          </p>
+          <div class="cs-grid-2">
+            <div class="cs-card">
+              <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--ny-accent); margin-bottom:12px;">MVP</p>
+              <ul style="display:flex; flex-direction:column; gap:9px;">
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Location</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Issue categories</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Photo upload</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Optional description</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Review screen</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Report ID</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Status tracking</li>
+              </ul>
+            </div>
+            <div class="cs-card cs-card-accent">
+              <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--ny-accent); margin-bottom:12px;">Future</p>
+              <ul style="display:flex; flex-direction:column; gap:9px;">
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• AI issue detection from photo</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• AI-generated description</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Duplicate detection</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Smart categorization</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Automatic department routing</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Predictive resolution updates</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Advanced notifications</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cs-card" style="display:flex; align-items:flex-start; gap:14px; padding:18px 22px; margin-top:16px;">
+            <span class="material-icons" style="font-size:1.5rem; color:var(--ny-accent); min-width:28px; margin-top:2px;">lightbulb</span>
+            <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7;">
+              <strong style="color:var(--text-primary);">Why no AI in MVP?</strong> "I wanted to validate the core reporting experience first instead of adding AI just because it was possible."
+            </p>
+          </div>
+        </section>
+
+        <!-- ASSUMPTIONS & TRADE-OFFS -->
+        <section id="tradeoffs" class="cs-section">
+          <h2>Assumptions &amp; Trade-offs</h2>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>Assumptions</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <ul style="display:flex; flex-direction:column; gap:8px;">
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Users allow location access.</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Photos can provide useful evidence.</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Reports may require verification.</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);">• Multiple users may report the same issue.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cs-accordion-item">
+            <div class="cs-accordion-header" onclick="toggleAccordion(this)">
+              <span>Trade-offs</span>
+              <span class="material-icons">expand_more</span>
+            </div>
+            <div class="cs-accordion-body">
+              <ul style="display:flex; flex-direction:column; gap:10px;">
+                <li style="font-size:0.88rem; color:var(--text-secondary);"><strong style="color:var(--text-primary);">Photo vs description</strong> → Photo prioritized, writing optional.</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);"><strong style="color:var(--text-primary);">AI vs simplicity</strong> → AI moved to future.</li>
+                <li style="font-size:0.88rem; color:var(--text-secondary);"><strong style="color:var(--text-primary);">More information vs cognitive load</strong> → Only essential info shown during reporting.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUCCESS METRICS -->
+        <section id="metrics" class="cs-section">
+          <h2>Success Metrics</h2>
+          <p style="font-size:0.96rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px;">
+            These are proposed success metrics, not measured results.
+          </p>
+          <div class="cs-grid-auto">
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.6rem; color:var(--ny-accent); display:block; margin-bottom:8px;">task_alt</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:10px;">Completion</h4>
+              <ul style="display:flex; flex-direction:column; gap:6px;">
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Report completion rate</li>
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Drop-off by step</li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.6rem; color:var(--ny-accent); display:block; margin-bottom:8px;">timer</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:10px;">Efficiency</h4>
+              <ul style="display:flex; flex-direction:column; gap:6px;">
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Time to submit</li>
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Bounce-back / error rate</li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.6rem; color:var(--ny-accent); display:block; margin-bottom:8px;">visibility</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:10px;">Engagement</h4>
+              <ul style="display:flex; flex-direction:column; gap:6px;">
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Report tracking usage</li>
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Return visits</li>
+              </ul>
+            </div>
+            <div class="cs-card">
+              <span class="material-icons" style="font-size:1.6rem; color:var(--ny-accent); display:block; margin-bottom:8px;">monitor_heart</span>
+              <h4 style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; margin-bottom:10px;">Product Health</h4>
+              <ul style="display:flex; flex-direction:column; gap:6px;">
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Duplicate reports</li>
+                <li style="font-size:0.83rem; color:var(--text-secondary);">• Usage by area</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROTOTYPE -->
+        <section id="prototype" class="cs-section">
+          <h2>Prototype</h2>
+          <div class="cs-banner cs-card-accent" style="padding:40px 24px;">
+            <p class="cs-banner-label">Experience the design</p>
+            <p class="cs-banner-title" style="margin-bottom:28px;">Report → Submit → Track → Resolve</p>
+            <div class="cs-btn-row" style="margin-top:0;">
+              <a href="https://www.figma.com/proto/YJEOLXQvcIge6gQdXBbhkK/Leo-Design-System?node-id=65-2673&t=RSgN1z54vXmWMpMn-0&scaling=min-zoom&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=65%3A2376" target="_blank" rel="noopener noreferrer" class="cs-btn-primary">
+                View Interactive Prototype →
+              </a>
+              <a href="https://www.figma.com/design/YJEOLXQvcIge6gQdXBbhkK/Leo-Design-System?node-id=92-2612&t=RSgN1z54vXmWMpMn-1" target="_blank" rel="noopener noreferrer" class="cs-btn-secondary">
+                View Figma File →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- REFLECTION -->
+        <section id="reflection" class="cs-section">
+          <h2>Reflection</h2>
+          <div class="cs-quote" style="margin-bottom:24px;">
+            "I'm most proud of the stepper and tracking experience. The stepper helped me think about how to guide users through a task, while tracking pushed me to think beyond submission and consider what happens afterward. This project helped me apply my previous design experience to a more practical, real-world problem."
+          </div>
+
+          <div class="cs-closing">
+            <p class="cs-closing-title">Frictionless Civic Complaint</p>
+            <p class="cs-closing-tagline">Report simply. Track transparently. Protect citizens.</p>
+            <p class="cs-closing-flow">Report → Verify → Assign → Resolve</p>
+          </div>
+
+          <div style="text-align:center; margin-top:40px;">
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:20px;">Designed by <strong style="color:var(--text-primary);">Sagar Shivaji</strong></p>
+            <a href="../index.html" class="cs-btn-primary" style=" :30px;">Back to Portfolio</a>
+          </div>
+        </section>
+
+      </div><!-- /cs-content -->
+    </div><!-- /cs-layout -->
+    </div><!-- /fullCaseStudy -->
+
+  </div><!-- /cs-container -->
+
+  <!-- PREMIUM FOOTER -->
+  <footer class="footer-pro">
+    <div class="footer-glow-strip"></div>
+    <div class="container" style="max-width:1120px; margin:0 auto; padding:0 32px;">
+      <div class="footer-cta-row">
+        <div class="footer-cta-left">
+          <span class="footer-eyebrow">Open to opportunities</span>
+          <h2 class="footer-cta-heading">Let's build something<br><span class="footer-cta-accent">remarkable together.</span></h2>
+        </div>
+        <div class="footer-cta-actions">
+          <a href="mailto:sagarshivaji89@gmail.com" class="btn btn-primary btn-large">Say Hello ↗</a>
+          <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="btn btn-outline btn-large">View Resume</a>
+        </div>
+      </div>
+      <div class="footer-rule"></div>
+      <div class="footer-main-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo-pro">Sagar Shivaji</div>
+          <p class="footer-bio">AI Product Designer specialising in B2B SaaS, enterprise workflows, and human-centred systems.</p>
+          <div class="footer-status-pill">
+            <span class="status-dot"></span>
+            <span>Available for select projects</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Navigation</p>
+          <a href="../index.html" class="footer-link-pro">Home</a>
+          <a href="../work.html" class="footer-link-pro footer-link-active">Work</a>
+          <a href="../about.html" class="footer-link-pro">About</a>
+          <a href="../research.html" class="footer-link-pro">Research</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Work</p>
+          <a href="gymogram.html" class="footer-link-pro">Gymogram</a>
+          <a href="job-pulse.html" class="footer-link-pro">Job Pulse</a>
+          <a href="bench-sales.html" class="footer-link-pro">Bench Sales</a>
+          <a href="laundry-app.html" class="footer-link-pro">Laundry App</a>
+          <a href="namma-yatri.html" class="footer-link-pro">Namma Yatri</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Connect</p>
+          <a href="https://www.linkedin.com/in/sagar-shivaji-090904262/" class="footer-link-pro" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://www.behance.net/sagarshivaji" class="footer-link-pro" target="_blank" rel="noopener">Behance ↗</a>
+          <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" class="footer-link-pro" target="_blank" rel="noopener">Resume ↗</a>
+        </div>
+      </div>
+      <div class="footer-bottom-pro">
+        <span class="footer-copy-pro">© 2026 Sagar Shivaji · All rights reserved</span>
+        <span class="footer-craft-pro">Crafted with ♥ in Hyderabad, India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // Accordion toggle
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Active sidebar nav on scroll
+    (function () {
+      const sections = document.querySelectorAll('.cs-section');
+      const navLinks = document.querySelectorAll('.cs-nav a');
+
+      function updateActive() {
+        let current = '';
+        sections.forEach(section => {
+          if (window.scrollY >= section.offsetTop - 120) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActive);
+      updateActive();
+    })();
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BDRFHDY8E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1BDRFHDY8E');
+  </script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Design System · Color Foundation & Tokens · Sagar Shivaji</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #ffffff; 
+            --bg-light: #f8f9fa; 
+            --text-main: #202124; 
+            --text-muted: #5f6368; 
+            --primary-blue: #1a73e8; 
+            --primary-blue-hover: #1557b0; 
+            --border-color: #dadce0; 
+            --radius-card: 20px; 
+            --radius-btn: 9999px; 
+            --font-heading: 'Google Sans', 'Outfit', sans-serif; 
+            --font-body: 'Roboto', sans-serif; 
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: var(--text-main); background-color: var(--bg-color); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 500; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+        .section { padding: 80px 0; }
+        .bg-light { background-color: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 16px; } 
+        .mb-4 { margin-bottom: 32px; } 
+        
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: var(--radius-btn); font-family: var(--font-heading); font-weight: 500; font-size: 0.98rem; transition: all 0.2s ease; cursor: pointer; }
+        .btn-primary { background-color: var(--primary-blue); color: white; border: 1px solid var(--primary-blue); }
+        .btn-primary:hover { background-color: var(--primary-blue-hover); box-shadow: 0 4px 12px rgba(26,115,232,0.3); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-outline:hover { background-color: #f1f3f4; transform: translateY(-2px); }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+
+        /* Navbar */
+        .navbar { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-color); z-index: 100; }
+        .nav-container { max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.45rem; font-weight: 700; }
+        .logo span { color: var(--primary-blue); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a:not(.btn) { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; transition: color 0.2s; }
+        .nav-links a:not(.btn):hover { color: var(--text-main); }
+
+        /* Hero */
+        .cs-hero { padding: 80px 0 40px; text-align: center; }
+        .badge-pill { display: inline-block; background: #e0f2fe; color: var(--primary-blue); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: var(--radius-btn); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .cs-hero h1 { font-size: 3.6rem; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.18; }
+        .cs-hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 840px; margin: 0 auto; line-height: 1.6; }
+        
+        .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 960px; margin: 50px auto 0; text-align: left; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 28px 0; }
+        .meta-item h4 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .meta-item p { font-size: 1.05rem; font-weight: 500; color: var(--text-main); line-height: 1.4; }
+
+        .hero-banner-image { width: 100%; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 16px 40px rgba(0,0,0,0.06); margin-bottom: 60px; background: white; }
+        .hero-banner-image img { width: 100%; height: auto; display: block; }
+
+        /* Content */
+        .content-block { max-width: 880px; margin: 0 auto; }
+        .content-block h2 { font-size: 2.2rem; margin-bottom: 20px; letter-spacing: -0.5px; color: var(--text-main); }
+        .content-block h3 { font-size: 1.4rem; margin: 36px 0 14px 0; color: var(--text-main); }
+        .content-block p { font-size: 1.08rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
+        
+        .process-label { display: inline-block; background-color: var(--primary-blue); color: white; padding: 5px 14px; border-radius: var(--radius-btn); font-size: 0.8rem; font-family: var(--font-heading); font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .cs-img-frame { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 8px 24px rgba(0,0,0,0.04); margin: 28px 0 36px; background: white; }
+        .cs-img-frame img { width: 100%; height: auto; display: block; }
+
+        /* Token Architecture Diagram */
+        .token-diagram-box {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin: 24px 0 32px;
+        }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; text-align: center; }
+        .metric-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .metric-card h3 { font-size: 3rem; color: var(--primary-blue); margin-bottom: 8px; font-weight: 700; }
+        .metric-card p { font-size: 1rem; font-weight: 500; color: var(--text-main); line-height: 1.4; }
+
+        .other-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+        .other-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+        .other-card-img { height: 180px; overflow: hidden; background: #f1f5f9; }
+        .other-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .other-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .other-card-body h4 { font-size: 1.2rem; margin-bottom: 8px; }
+        .other-card-body p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; flex: 1; }
+        .link-arrow { color: var(--primary-blue); font-weight: 500; font-size: 1rem; display: inline-flex; align-items: center; gap: 6px; }
+
+        .footer { padding: 64px 0 32px; background-color: var(--bg-light); border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+        .footer-legal { display: flex; gap: 24px; }
+        .footer-legal a:hover { color: var(--primary-blue); }
+        
+        @media (max-width: 768px) {
+            .cs-hero h1 { font-size: 2.4rem; }
+            .meta-grid { grid-template-columns: 1fr 1fr; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Sagar<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="research.html">Research</a>
+                <a href="case-study.html">Case Study</a>
+                <a href="case-study-designsystem.html" style="color: var(--primary-blue); font-weight: 600;">Design System</a>
+                <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="btn btn-outline" style="padding: 8px 20px;">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="cs-hero container">
+        <span class="badge-pill">Design Systems · Token Architecture · 2026</span>
+        <h1>Leo Design System — Color Foundation</h1>
+        <p>A structured 3-tier token architecture (Primitive, Semantic, Component) connecting Figma variables to production CSS for scalable multi-brand enterprise software.</p>
+
+        <div class="hero-actions">
+            <a href="https://www.figma.com/design/YJEOLXQvcIge6gQdXBbhkK/Leo-Design-System?node-id=92-2612" target="_blank" class="btn btn-primary">Figma Design System File ↗</a>
+            <a href="https://github.com/Sagarshivaji" target="_blank" class="btn btn-outline">GitHub Source Tokens ↗</a>
+        </div>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Design Systems Architect</p>
+            </div>
+            <div class="meta-item">
+                <h4>Scope</h4>
+                <p>Primitive to Component Tokens</p>
+            </div>
+            <div class="meta-item">
+                <h4>Accessibility</h4>
+                <p>WCAG 2.2 AA / AAA Compliance</p>
+            </div>
+            <div class="meta-item">
+                <h4>Handoff</h4>
+                <p>Figma Variables & CSS Custom Props</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Image -->
+    <div class="container">
+        <div class="hero-banner-image">
+            <img src="work/design system/cover.png" alt="Leo Design System Color Tokens Cover">
+        </div>
+    </div>
+
+    <!-- 1. PROBLEM & OBJECTIVE -->
+    <section class="section bg-light">
+        <div class="container content-block">
+            <span class="process-label">Phase 1: Architecture Challenge</span>
+            <h2>Why Primitive Hex Values Fail Enterprise Scale</h2>
+            <p>Hardcoded hex values create visual drift, break dark mode parity, and turn simple brand theme updates into weeks of refactoring. When developers inspect Figma files and see arbitrary values like <code>#1E40AF</code>, they are left guessing intent: Is this a background? A border? An interactive hover state?</p>
+            
+            <p>The Leo Design System solves this through a rigorous 3-tier abstraction model:</p>
+
+            <div class="token-diagram-box">
+[ Tier 1: Primitive Tokens ]
+  └── color-blue-500 = #3b82f6 (raw palette values)
+
+[ Tier 2: Semantic Tokens ]
+  └── color-action-primary = {color-blue-500} (meaningful aliases)
+
+[ Tier 3: Component Tokens ]
+  └── btn-primary-bg = {color-action-primary} (component scopes)
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. PRIMITIVE PALETTE -->
+    <section class="section">
+        <div class="container content-block">
+            <span class="process-label">Phase 2: Primitive Palette</span>
+            <h2>Global Primitive Ramp</h2>
+            <p>The foundation defines a 10-step luminance ramp for neutral grays, brand blues, emerald success, and rose error tones calibrated for perceptual lightness balance.</p>
+
+            <div class="cs-img-frame">
+                <img src="work/design system/primitive.png" alt="Leo Design System Primitive Tokens">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SEMANTIC MAPPING & DARK MODE -->
+    <section class="section bg-light">
+        <div class="container content-block">
+            <span class="process-label">Phase 3: Semantic Layer</span>
+            <h2>Light & Dark Mode Parity</h2>
+            <p>Semantic tokens assign purposeful roles (Surface, Text, Border, Action). By swapping semantic mappings between light and dark modes, applications achieve automated theme switching without touching component CSS.</p>
+
+            <div class="cs-img-frame">
+                <img src="work/design system/semantic.png" alt="Leo Design System Semantic Tokens">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ACTION & INTERACTIVE STATES -->
+    <section class="section">
+        <div class="container content-block">
+            <span class="process-label">Phase 4: Component States</span>
+            <h2>Interactive State Tokens</h2>
+            <p>Every interactive element features documented token bindings for default, hover, active, focused, and disabled states, verified against WCAG AA 4.5:1 contrast standards.</p>
+
+            <div class="cs-img-frame">
+                <img src="work/design system/action.png" alt="Leo Design System Action and Button Tokens">
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. RESULTS -->
+    <section class="section bg-light">
+        <div class="container content-block">
+            <span class="process-label">Phase 5: Outcomes</span>
+            <h2>Design & Engineering Impact</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>100%</h3>
+                    <p>Figma to Code Alignment<br><span style="color: var(--primary-blue); font-size: 0.85rem;">(Zero hardcoded hex values)</span></p>
+                </div>
+                <div class="metric-card">
+                    <h3>AAA</h3>
+                    <p>WCAG Contrast Ratio<br><span style="color: var(--primary-blue); font-size: 0.85rem;">(Across all core typography tokens)</span></p>
+                </div>
+                <div class="metric-card">
+                    <h3>3x</h3>
+                    <p>Faster Handoff Velocity<br><span style="color: var(--primary-blue); font-size: 0.85rem;">(Direct token mapping in pull requests)</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE CASE STUDIES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Explore Other Case Studies</h2>
+            <p class="section-subtitle">More product design and full-stack development case studies.</p>
+
+            <div class="grid-3">
+                <a href="case-study.html" class="other-card">
+                    <div class="other-card-img"><img src="images/civic.png" alt="Namma Yatri"></div>
+                    <div class="other-card-body">
+                        <h4>Namma Yatri Civic Complaint</h4>
+                        <p>Removing administrative friction from citizen reporting with 1-tap geotagged complaints.</p>
+                        <span class="link-arrow">View Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="case-study-gymogram.html" class="other-card">
+                    <div class="other-card-img"><img src="images/gymogram/new hero.png" alt="Gymogram"></div>
+                    <div class="other-card-body">
+                        <h4>Gymogram Social Fitness</h4>
+                        <p>A social fitness mobile app with gamified workout streaks and community accountability.</p>
+                        <span class="link-arrow">View Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="case-study-benchsales.html" class="other-card">
+                    <div class="other-card-img"><img src="images/benchsales.png" alt="Bench Sales Platform" style="filter: blur(2px);"></div>
+                    <div class="other-card-body">
+                        <h4>AI Bench Sales Platform</h4>
+                        <p>Enterprise SaaS platform designed for staffing teams to track consultants and automate submissions.</p>
+                        <span class="link-arrow">View Case Study &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <div>
+                <p>&copy; 2026 Sagar Shivaji · All rights reserved</p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 4px;">Crafted with care in Hyderabad, India</p>
+            </div>
+            <div class="footer-legal">
+                <a href="index.html">Home</a>
+                <a href="https://www.linkedin.com/in/sagar-shivaji-090904262/" target="_blank">LinkedIn</a>
+                <a href="https://www.behance.net/sagarshivaji" target="_blank">Behance</a>
+                <a href="https://github.com/Sagarshivaji" target="_blank">GitHub</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

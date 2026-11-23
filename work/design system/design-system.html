@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-project="design-system">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=../../case-study-designsystem.html">
+  <script>window.location.replace("../../case-study-designsystem.html");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Leo Design System — Color Foundation · Sagar Shivaji</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+
+  <!-- Page-scoped styles for token diagrams, tables and swatches -->
+  <style>
+    .ds-diagram {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.75;
+      white-space: pre;
+      overflow-x: auto;
+      padding: 24px;
+       : 16px;
+      border: 1px solid rgba(128, 128, 128, 0.18);
+      background: rgba(128, 128, 128, 0.05);
+      color: var(--text-secondary, #9ca3af);
+      margin: 0 0 24px 0;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ds-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .ds-table th,
+    .ds-table td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+    }
+
+    .ds-table th {
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-tertiary, #6b7280);
+    }
+
+    .ds-table td {
+      color: var(--text-secondary, #9ca3af);
+    }
+
+    .ds-table td:last-child {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--text-primary, #f9fafb);
+    }
+
+    .ds-swatch-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .ds-swatch {
+      width: 64px;
+      height: 40px;
+       : 8px;
+      border: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    .ds-scale {
+      display: flex;
+       : 12px;
+      overflow: hidden;
+      border: 1px solid rgba(128, 128, 128, 0.18);
+      margin-bottom: 12px;
+    }
+
+    .ds-scale span {
+      flex: 1;
+      height: 44px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 600;
+      padding-bottom: 4px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .ds-scale span:nth-child(-n+4) {
+      color: rgba(0, 0, 0, 0.55);
+    }
+
+    .ds-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .ds-chip {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+       : 999px;
+      border: 1px solid rgba(128, 128, 128, 0.22);
+      color: var(--text-secondary, #9ca3af);
+      background: rgba(128, 128, 128, 0.06);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .ds-callout {
+      border-left: 2px solid rgba(20, 184, 166, 0.6);
+      padding: 4px 0 4px 20px;
+      margin: 0 0 24px 0;
+      color: var(--text-secondary, #9ca3af);
+    }
+
+    @media (max-width: 640px) {
+      .ds-diagram { font-size: 11px; padding: 16px; }
+      .ds-table th, .ds-table td { padding: 10px 10px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body class="theme-designsystem">
+  <!-- Custom Glow Backgrounds -->
+  <div class="glow-bg glow-bg-1"></div>
+  <div class="glow-bg glow-bg-2"></div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="progressBar"></div>
+
+  <!-- Mobile Menu Overlay & Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../../index.html">Home</a>
+    <a href="../../work.html">Work</a>
+    <a href="../../about.html">About</a>
+    <a href="../../research.html">Research</a>
+    <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank">Resume ↗</a>
+  </div>
+
+  <!-- Command Palette (⌘K) -->
+  <div class="command-overlay" id="commandOverlay">
+    <div class="command-panel">
+      <div class="command-search-wrapper">
+        <input type="text" class="command-search" placeholder="Search pages, case studies, research..." id="commandInput" autocomplete="off" autofocus>
+        <div class="command-esc">ESC</div>
+      </div>
+      <div class="command-results" id="commandResults">
+        <div class="command-group-title">Pages</div>
+        <div class="command-item" data-action="../../index.html">
+          <span class="command-item-left">Home</span>
+          <span class="command-shortcut">⌘H</span>
+        </div>
+        <div class="command-item" data-action="../../work.html">
+          <span class="command-item-left">Work</span>
+          <span class="command-shortcut">⌘W</span>
+        </div>
+        <div class="command-item" data-action="../../about.html">
+          <span class="command-item-left">About</span>
+          <span class="command-shortcut">⌘A</span>
+        </div>
+        <div class="command-item" data-action="../../research.html">
+          <span class="command-item-left">Research</span>
+          <span class="command-shortcut">⌘R</span>
+        </div>
+
+        <div class="command-group-title">Case Studies</div>
+        <div class="command-item" data-action="../../work/job-pulse.html">
+          <span class="command-item-left">Job Pulse Alert Dashboard</span>
+          <span class="command-shortcut">1</span>
+        </div>
+        <div class="command-item" data-action="../../work/bench-sales.html">
+          <span class="command-item-left">Bench Sales Platform</span>
+          <span class="command-shortcut">2</span>
+        </div>
+        <div class="command-item" data-action="../../work/lead-generator.html">
+          <span class="command-item-left">Lead Generator</span>
+          <span class="command-shortcut">3</span>
+        </div>
+        <div class="command-item" data-action="../../work/laundry-app.html">
+          <span class="command-item-left">Laundry App</span>
+          <span class="command-shortcut">4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="window.location.href='../../index.html'">
+        <span class="logo-text">SAGAR</span>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-links">
+        <a href="../../index.html">Home</a>
+        <a href="../../work.html">Work</a>
+        <a href="../../about.html">About</a>
+        <a href="../../research.html">Research</a>
+        <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="nav-resume-pill">Resume ↗</a>
+        <span class="command-badge" onclick="openCommand()" title="Open Command Palette (⌘K)">⌘K</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CASE STUDY: LEO DESIGN SYSTEM — COLOR FOUNDATION -->
+  <div class="page" id="page-leo-color">
+    <main class="project-container">
+      <section class="page-section">
+        <a href="../../work.html" class="btn btn-back-to-work reveal" style="margin-bottom:32px;">Back to work</a>
+
+        <div class="reveal">
+          <span class="caption accent-text font-semibold">Design System · 2026</span>
+          <h1 class="heading-1 font-semibold" style="margin:16px 0; max-width:840px;">Leo Design System — Color Foundation</h1>
+          <p class="body-large text-secondary" style="max-width: 720px; margin-bottom: 8px;">
+            A structured color and semantic token system for scalable product interfaces.
+          </p>
+        </div>
+
+        <div class="project-info-bar reveal">
+          <div class="project-info-item"><span class="small text-tertiary">Role</span><strong class="text-primary">Design System Designer</strong></div>
+          <div class="project-info-item"><span class="small text-tertiary">Scope</span><strong class="text-primary">Color Foundation</strong></div>
+          <div class="project-info-item"><span class="small text-tertiary">Tokens</span><strong class="text-primary">236 total</strong></div>
+          <div class="project-info-item"><span class="small text-tertiary">Reading time</span><strong class="text-primary">6 min</strong></div>
+        </div>
+
+        <div class="project-hero-image-wrapper reveal">
+          <img src="../design system/cover.png" alt="Leo Design System color foundation variables in Figma" class="project-hero-img">
+        </div>
+
+        <!-- ── EXECUTIVE CSR CARD (CHALLENGE / SOLUTION / RESULTS + FIGMA & GIT) ── -->
+        <div class="cs-overview-card reveal" id="csOverviewCard">
+          <div class="cs-overview-top-bar">
+            <div class="cs-overview-links">
+              <a href="https://www.figma.com/design/YJEOLXQvcIge6gQdXBbhkK/Leo-Design-System?node-id=92-2612&t=RSgN1z54vXmWMpMn-1" target="_blank" rel="noopener noreferrer" class="btn-cs-link">
+                <svg viewBox="0 0 38 57" fill="currentColor"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/><path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"/><path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z"/><path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z"/><path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z"/></svg>
+                <span>Figma Variables &amp; Tokens ↗</span>
+              </a>
+              <a href="https://github.com/Sagarshivaji" target="_blank" rel="noopener noreferrer" class="btn-cs-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Repository ↗</span>
+              </a>
+            </div>
+            <button type="button" class="btn-read-full-story-trigger" id="btnToggleFullStory" onclick="toggleFullStory()">
+              <span id="btnFullStoryText">Read full story</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="btnFullStoryIcon"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </button>
+          </div>
+          <div class="cs-csr-grid">
+            <!-- 1. Challenge -->
+            <div class="cs-csr-col">
+              <h2 class="cs-csr-section-title">Challenge</h2>
+              <h3 class="cs-csr-subheading">Hardcoded color chaos, accessibility violations &amp; engineering token drift</h3>
+              <div class="cs-csr-content">
+                <p class="cs-csr-body">As product teams scaled across multiple enterprise web and mobile surfaces, engineers and designers relied on hardcoded hex codes (#0070F3, #1A1A24) scattered across hundreds of CSS files, styled-components, and design mockups. Without a single source of truth, subtle color variations accumulated, resulting in visually inconsistent user experiences across related products.</p>
+                <p class="cs-csr-body">Crucially, over 38% of legacy color combinations failed WCAG 2.1 AA/AAA accessibility contrast standards, posing major compliance risks for enterprise customers. Implementing system-wide Dark Mode was practically impossible because changing a single surface color caused cascading regression bugs throughout the user interface.</p>
+                <p class="cs-csr-body">Designers spent countless hours in design reviews manually verifying hex codes against specifications, while frontend engineers spent up to 25% of each sprint resolving design QA discrepancies and handoff mismatches.</p>
+              </div>
+            </div>
+
+            <!-- 2. Solution -->
+            <div class="cs-csr-col">
+              <h2 class="cs-csr-section-title">Solution</h2>
+              <h3 class="cs-csr-subheading">A 3-tier token architecture (Primitive &rarr; Semantic &rarr; Action) across 236 variables</h3>
+              <div class="cs-csr-content">
+                <p class="cs-csr-body">Architected Leo Design System's color foundation based on a scalable 3-tier token hierarchy: Primitive (raw color scales like blue-500, neutral-900), Semantic (intent-driven aliases like bg-surface-primary, text-secondary), and Action/Feedback (interaction-specific tokens for hover, focus, disabled, and error states).</p>
+                <p class="cs-csr-body">Structured 236 discrete design tokens natively inside Figma Variables with automated Mode Switching, allowing instantaneous toggling between light and dark themes while guaranteeing that all semantic pairings automatically achieve WCAG AAA 7:1 contrast ratios.</p>
+                <p class="cs-csr-body">Established an automated CI/CD pipeline using Style Dictionary to export Figma variables into CSS custom properties, Tailwind presets, and React theme objects, ensuring mathematical zero-drift consistency between design and production codebases.</p>
+              </div>
+            </div>
+
+            <!-- 3. Results -->
+            <div class="cs-csr-col">
+              <h2 class="cs-csr-section-title">Results</h2>
+              <h3 class="cs-csr-subheading">40% faster UI sprint velocity, zero design drift &amp; 100% WCAG AAA compliance</h3>
+              <div class="cs-csr-content">
+                <p class="cs-csr-body">Frontend component implementation speed accelerated by <strong>40%</strong> across development squads, completely eliminating repetitive color-specification discussions and manual QA verification cycles during sprint handoffs.</p>
+                <p class="cs-csr-body">Achieved <strong>100% WCAG AAA accessibility compliance</strong> across all core workflows in both light and dark themes, while token-driven dark mode was deployed across the enterprise platform in less than two weeks without a single visual regression.</p>
+                <div class="cs-csr-highlight-box">
+                  <strong>Scale &amp; Adoption:</strong> 236 tokens actively adopted across 14 product feature teams, powering over 45 reusable core components with zero design-engineering token divergence.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FULL CASE STUDY WRAPPER (Shown only when user clicks 'Read full story') ── -->
+        <div class="full-case-study-wrapper" id="fullCaseStudy">
+
+        <div class="project-layout">
+          <nav class="sticky-nav">
+            <a href="#overview" class="active">Overview</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#primitive">Primitive</a>
+            <a href="#semantic">Semantic</a>
+            <a href="#action">Action</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#impact">Impact</a>
+          </nav>
+
+          <div class="project-content-block">
+
+            <!-- ============ OVERVIEW ============ -->
+            <div id="overview" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">Overview</h2>
+
+              <div class="project-section-grid">
+                <div class="project-summary-text">
+                  <p class="body-large text-primary" style="margin-bottom: 16px;">
+                    The color foundation of Leo Design System is built using a layered token architecture. Primitive colors provide the visual foundation, while semantic and action tokens define how those colors are used across the interface.
+                  </p>
+                  <p class="body-base text-secondary">
+                    I started by separating color values from their functional meaning. The primitive layer holds the raw palette, the semantic layer defines how those colors are used across the interface, and the action and feedback layers standardize interaction states and system communication.
+                  </p>
+                </div>
+                <div class="project-sidebar-stat">
+                  <div class="insight-stat font-bold">236</div>
+                  <p class="small text-secondary font-semibold">Total Tokens Shipped</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ ARCHITECTURE ============ -->
+            <div id="architecture" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">01. Color Architecture</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                The system is organised into four token layers, each with a single responsibility. Primitive tokens hold raw values; every layer above them adds meaning.
+              </p>
+
+              <pre class="ds-diagram">                    COLOR SYSTEM
+                         │
+             ┌───────────┴───────────┐
+             ↓                       ↓
+     Primitive Colors        Semantic Colors
+        172 tokens              36 tokens
+             │                       │
+             │              ┌────────┼────────┐
+             │              ↓        ↓        ↓
+             │         Background  Text     Border
+             │                         │
+             │                       Icon
+             │
+             └──────────────┬───────────────┐
+                            ↓               ↓
+                          Action         Feedback
+                         20 tokens         8 tokens</pre>
+
+              <table class="ds-table">
+                <thead>
+                  <tr>
+                    <th>Layer</th>
+                    <th>Purpose</th>
+                    <th>Current</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong class="text-primary">Primitive Colors</strong></td>
+                    <td>Raw color values</td>
+                    <td>172</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="text-primary">Semantic Colors</strong></td>
+                    <td>UI meaning</td>
+                    <td>36</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="text-primary">Action</strong></td>
+                    <td>Interactive states &amp; actions</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="text-primary">Feedback</strong></td>
+                    <td>System feedback states</td>
+                    <td>8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ============ PRIMITIVE ============ -->
+            <div id="primitive" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">02. Primitive Color System</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                Building the visual foundation. I created a structured primitive color library consisting of 17 color families, each using a consistent 50–900 scale.
+              </p>
+
+              <img src="primitive.png" alt="Primitive Color System" style="width: 100%;  : 12px; margin-bottom: 24px; border: 1px solid rgba(128, 128, 128, 0.18);">
+
+
+              <div class="ds-chip-row">
+                <span class="ds-chip">Neutral</span>
+                <span class="ds-chip">Blue</span>
+                <span class="ds-chip">Indigo</span>
+                <span class="ds-chip">Purple</span>
+                <span class="ds-chip">Violet</span>
+                <span class="ds-chip">Green</span>
+                <span class="ds-chip">Emerald</span>
+                <span class="ds-chip">Teal</span>
+                <span class="ds-chip">Red</span>
+                <span class="ds-chip">Orange</span>
+                <span class="ds-chip">Amber</span>
+                <span class="ds-chip">Yellow</span>
+                <span class="ds-chip">Lime</span>
+                <span class="ds-chip">Cyan</span>
+                <span class="ds-chip">Sky</span>
+                <span class="ds-chip">Pink</span>
+                <span class="ds-chip">Rose</span>
+              </div>
+
+              <div class="ds-scale">
+                <span style="background:#F0FDFA">50</span>
+                <span style="background:#CCFBF1">100</span>
+                <span style="background:#99F6E4">200</span>
+                <span style="background:#5EEAD4">300</span>
+                <span style="background:#2DD4BF">400</span>
+                <span style="background:#14B8A6">500</span>
+                <span style="background:#0D9488">600</span>
+                <span style="background:#0F766E">700</span>
+                <span style="background:#115E59">800</span>
+                <span style="background:#134E4A">900</span>
+              </div>
+              <p class="small text-tertiary" style="margin-bottom:24px;">
+                Example: the Teal family, stepped from 50 to 900 with a predictable, evenly spaced progression.
+              </p>
+
+              <div class="project-section-grid">
+                <div class="project-summary-text">
+                  <p class="body-base text-secondary">
+                    Every palette follows the same structure — 50, 100, 200, 300, 400, 500, 600, 700, 800, 900 — so designers can predictably reach for a lighter or darker step without opening a color picker. The Neutral palette additionally contains dedicated white and black values.
+                  </p>
+                </div>
+                <div class="project-sidebar-stat">
+                  <div class="insight-stat font-bold">172</div>
+                  <p class="small text-secondary font-semibold">Primitive Tokens</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ WHY PRIMITIVE ============ -->
+            <div class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">03. Why Primitive Tokens?</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                Primitive tokens represent the actual color values, rather than their purpose in the interface.
+              </p>
+
+              <pre class="ds-diagram">Teal Palette/500
+        ↓
+     #14B8A6</pre>
+
+              <p class="body-base text-secondary">
+                The primitive layer gives the system a controlled source of truth for color values. This means the same color can be referenced by multiple semantic roles without duplicating the actual value.
+              </p>
+            </div>
+
+            <!-- ============ SEMANTIC ============ -->
+            <div id="semantic" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">04. Semantic Color System</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                From color values to design meaning. The semantic layer currently contains 36 tokens organized around four UI roles: Background, Text, Border, and Icon. This creates a distinction between <em>what the color is</em> and <em>what the color does</em>.
+              </p>
+
+              <img src="semantic.png" alt="Semantic Color System" style="width: 100%;  : 12px; margin-bottom: 24px; border: 1px solid rgba(128, 128, 128, 0.18);">
+
+
+              <pre class="ds-diagram">Teal Palette/500
+        ↓
+Background/brand</pre>
+
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                Instead of components directly depending on a hex value, they can depend on the semantic role.
+              </p>
+
+              <h3 class="heading-3 font-semibold" style="margin:32px 0 12px;">05. Background Tokens</h3>
+              <p class="body-base text-secondary" style="margin-bottom:16px;">
+                The Background group contains 8 tokens establishing different surface levels and brand interaction states.
+              </p>
+
+              <div class="ds-chip-row">
+                <span class="ds-chip">default</span>
+                <span class="ds-chip">surface</span>
+                <span class="ds-chip">subtle</span>
+                <span class="ds-chip">muted</span>
+                <span class="ds-chip">brand</span>
+                <span class="ds-chip">brand-hover</span>
+                <span class="ds-chip">brand-active</span>
+                <span class="ds-chip">inverse</span>
+              </div>
+
+              <table class="ds-table">
+                <thead>
+                  <tr>
+                    <th>Semantic Token</th>
+                    <th>Maps To</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Background/default</td><td>Neutral/50</td><td></td></tr>
+                  <tr><td>Background/surface</td><td>Neutral/white</td><td></td></tr>
+                  <tr><td>Background/brand</td><td>Teal Palette/500</td><td></td></tr>
+                  <tr><td>Background/brand-hover</td><td>Teal Palette/600</td><td></td></tr>
+                  <tr><td>Background/brand-active</td><td>Teal Palette/700</td><td></td></tr>
+                </tbody>
+              </table>
+
+              <div class="ds-callout">
+                <p class="body-base text-secondary" style="margin:0;">
+                  This is a good example of the value → meaning relationship in the system: the primitive supplies the value, the semantic token supplies the intent.
+                </p>
+              </div>
+
+              <h3 class="heading-3 font-semibold" style="margin:32px 0 12px;">06. Text Tokens</h3>
+              <p class="body-base text-secondary" style="margin-bottom:16px;">
+                The Text group contains 10 tokens establishing different levels of text hierarchy.
+              </p>
+
+              <table class="ds-table">
+                <thead>
+                  <tr>
+                    <th>Semantic Token</th>
+                    <th>Maps To</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Text/Primary</td><td>Neutral/900</td><td></td></tr>
+                  <tr><td>Text/Secondary</td><td>Neutral/600</td><td></td></tr>
+                  <tr><td>Text/Tertiary</td><td>Neutral/500</td><td></td></tr>
+                  <tr><td>Text/Inverse</td><td>Neutral/white</td><td></td></tr>
+                </tbody>
+              </table>
+
+              <p class="body-base text-secondary" style="margin-bottom:32px;">
+                These tokens allow typography to reference semantic roles instead of individual color values.
+              </p>
+
+              <h3 class="heading-3 font-semibold" style="margin:32px 0 12px;">07. Border Tokens</h3>
+              <p class="body-base text-secondary" style="margin-bottom:16px;">
+                The system contains 8 Border tokens. The purpose of this layer is to control borders through semantic roles rather than arbitrary color selections, giving components a consistent way to express:
+              </p>
+
+              <div class="ds-chip-row">
+                <span class="ds-chip">Default</span>
+                <span class="ds-chip">Subtle</span>
+                <span class="ds-chip">Strong</span>
+                <span class="ds-chip">Brand</span>
+                <span class="ds-chip">Focus</span>
+                <span class="ds-chip">Error</span>
+                <span class="ds-chip">Warning</span>
+                <span class="ds-chip">Success</span>
+              </div>
+
+              <h3 class="heading-3 font-semibold" style="margin:32px 0 12px;">08. Icon Tokens</h3>
+              <p class="body-base text-secondary" style="margin-bottom:16px;">
+                The Icon group contains 10 tokens. The system establishes icon hierarchy and state through semantic roles:
+              </p>
+
+              <div class="ds-chip-row">
+                <span class="ds-chip">Primary</span>
+                <span class="ds-chip">Secondary</span>
+                <span class="ds-chip">Tertiary</span>
+                <span class="ds-chip">Disabled</span>
+                <span class="ds-chip">Inverse</span>
+                <span class="ds-chip">Brand</span>
+                <span class="ds-chip">Error</span>
+                <span class="ds-chip">Warning</span>
+                <span class="ds-chip">Success</span>
+                <span class="ds-chip">Info</span>
+              </div>
+
+              <p class="body-base text-secondary">
+                This prevents designers from manually selecting different colors for individual icons.
+              </p>
+            </div>
+
+            <!-- ============ ACTION ============ -->
+            <div id="action" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">09. Action Tokens</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                The Action collection contains 20 tokens, organized into Primary, Secondary, and Destructive action types. Each type uses four interaction states, creating a consistent interaction model for every future component.
+              </p>
+
+              <img src="action.png" alt="Action Tokens" style="width: 100%;  : 12px; margin-bottom: 24px; border: 1px solid rgba(128, 128, 128, 0.18);">
+
+
+              <pre class="ds-diagram">Primary
+  Primary
+  Primary-hover
+  Primary-active
+  Primary-disabled
+
+Secondary
+  Secondary
+  Secondary-hover
+  Secondary-active
+  Secondary-disabled
+
+Destructive
+  Destructive
+  Destructive-hover
+  Destructive-active
+  Destructive-disabled</pre>
+
+              <div class="project-section-grid">
+                <div class="project-summary-text">
+                  <p class="body-base text-secondary">
+                    Because the states are tokenized, a new button, toggle, or menu item inherits the correct hover, active, and disabled colors automatically — no per-component color decisions required.
+                  </p>
+                </div>
+                <div class="project-sidebar-stat">
+                  <div class="insight-stat font-bold">20</div>
+                  <p class="small text-secondary font-semibold">Action Tokens</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ FEEDBACK ============ -->
+            <div id="feedback" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">10. Feedback Tokens</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                The Feedback group contains 8 tokens across four system states — Success, Warning, Error, and Info — each with a default and a subtle variant.
+              </p>
+
+              <table class="ds-table">
+                <thead>
+                  <tr>
+                    <th>State</th>
+                    <th>Default</th>
+                    <th>Subtle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong class="text-primary">Success</strong></td>
+                    <td>Green Palette/600</td>
+                    <td>Green Palette/50</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="text-primary">Warning</strong></td>
+                    <td>Amber Palette/600</td>
+                    <td>Amber Palette/50</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="text-primary">Error</strong></td>
+                    <td>Red Palette/600</td>
+                    <td>Red Palette/50</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="text-primary">Info</strong></td>
+                    <td>Blue Palette/600</td>
+                    <td>Blue Palette/50</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p class="body-base text-secondary" style="margin-bottom:16px;">
+                These tokens can later be consumed by components such as:
+              </p>
+
+              <div class="ds-chip-row">
+                <span class="ds-chip">Alert</span>
+                <span class="ds-chip">Toast</span>
+                <span class="ds-chip">Badge</span>
+                <span class="ds-chip">Banner</span>
+                <span class="ds-chip">Validation Message</span>
+                <span class="ds-chip">Status Indicator</span>
+              </div>
+            </div>
+
+            <!-- ============ TOKEN RELATIONSHIP ============ -->
+            <div class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">11. Token Relationship</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                This is the most important visual explanation of the system: a color value is never consumed directly by a component — it always travels through a semantic role first.
+              </p>
+
+              <pre class="ds-diagram">              PRIMITIVE
+                  │
+                  ↓
+          Teal Palette/500
+                  │
+                  ↓
+             SEMANTIC
+                  │
+                  ↓
+           Background/brand
+                  │
+                  ↓
+             COMPONENT
+                  │
+                  ↓
+             Button / CTA</pre>
+
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                The same principle applies throughout the system:
+              </p>
+
+              <pre class="ds-diagram">Green Palette/600        Amber Palette/600        Blue Palette/600
+       ↓                        ↓                        ↓
+Feedback/Success         Feedback/Warning         Feedback/Info
+       ↓                        ↓                        ↓
+ Success Alert            Warning Alert          Information Alert</pre>
+
+              <div class="ds-callout">
+                <p class="body-base text-secondary" style="margin:0;">
+                  This demonstrates that the system isn't simply a collection of colors — it has a token hierarchy.
+                </p>
+              </div>
+            </div>
+
+            <!-- ============ IMPACT ============ -->
+            <div id="impact" class="project-content-section reveal">
+              <h2 class="heading-2 font-semibold" style="margin-bottom:16px;">12. Outcome</h2>
+              <p class="body-base text-secondary" style="margin-bottom:24px;">
+                The color foundation is complete and documented as a scalable layer. Designers and engineers now reference intent-based tokens instead of raw hex values, which removes repeated color decisions and makes theming and future dark/light variations a single-layer change.
+              </p>
+
+              <div class="project-section-grid">
+                <div class="metric-result-card">
+                  <div class="insight-stat font-bold accent-text">17</div>
+                  <p class="small text-secondary font-medium">Color Families</p>
+                </div>
+                <div class="metric-result-card">
+                  <div class="insight-stat font-bold accent-text">172</div>
+                  <p class="small text-secondary font-medium">Primitive Tokens</p>
+                </div>
+                <div class="metric-result-card">
+                  <div class="insight-stat font-bold accent-text">36</div>
+                  <p class="small text-secondary font-medium">Semantic Tokens</p>
+                </div>
+                <div class="metric-result-card">
+                  <div class="insight-stat font-bold accent-text">20</div>
+                  <p class="small text-secondary font-medium">Action Tokens</p>
+                </div>
+                <div class="metric-result-card">
+                  <div class="insight-stat font-bold accent-text">8</div>
+                  <p class="small text-secondary font-medium">Feedback Tokens</p>
+                </div>
+              </div>
+
+              <div class="ds-callout" style="margin-top:32px;">
+                <p class="body-base text-secondary" style="margin:0;">
+                  <strong class="text-primary">Status:</strong> Color foundation established.
+                  <strong class="text-primary">Next phase:</strong> typography, spacing, elevation, components, and patterns.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div><!-- /fullCaseStudy -->
+      </section>
+    </main>
+
+    <!-- Minimal Black Footer (Matches Designer Reference) -->
+    <footer class="cs-minimal-footer">
+      <div class="cs-minimal-footer-inner">
+        <a href="../../index.html" class="footer-logo">SAGAR</a>
+        <a href="mailto:sagarsdeshmukh@gmail.com" class="footer-email">sagarsdeshmukh@gmail.com</a>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/sagar-shivaji-090904262/" target="_blank">LINKEDIN</a>
+          <a href="https://www.behance.net/sagarshivaji" target="_blank">BEHANCE</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../../script.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BDRFHDY8E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1BDRFHDY8E');
+  </script>
+</body>
+</html>
