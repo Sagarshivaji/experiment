@@ -87,7 +87,7 @@ function initNavigation() {
       link.classList.add('active');
     } else if (!isLinkHome && (path.includes(href) || (path.startsWith(href.replace('.html', ''))))) {
       link.classList.add('active');
-    } else if (path.includes('/work/') && href === '/work.html') {
+    } else if (path.includes('/work/') && href === '/index.html') {
       // Keep 'Work' nav item highlighted when inside deep case study directories
       link.classList.add('active');
     } else if (path.includes('/research/') && href === '/research.html') {

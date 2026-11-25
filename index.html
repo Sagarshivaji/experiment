@@ -292,6 +292,41 @@
             .dark-section h2 { font-size: 2.3rem; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
+
+        /* Coming Soon Card Styles */
+        .coming-soon-card { opacity: 0.82; }
+        .coming-soon-card:hover { transform: none; box-shadow: none; }
+        .coming-soon-placeholder {
+            min-height: 290px; width: 100%; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(135deg, #f8fafc, #eef2ff);
+            color: var(--text-muted); text-align: center;
+        }
+        .coming-soon-placeholder.apps-placeholder { min-height: 260px; }
+        .coming-soon-placeholder .coming-soon-mark {
+            width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
+            border: 1px dashed var(--border-color); background: rgba(255,255,255,0.75);
+            font-size: 1.8rem; font-family: var(--font-heading); color: var(--primary-blue);
+        }
+        .coming-soon-placeholder strong { font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-main); }
+
+        /* Artwork Modal Styles */
+        .artwork-trigger { width: 100%; border: 0; padding: 0; cursor: pointer; }
+        .artwork-trigger:focus-visible { outline: 3px solid var(--primary-blue); outline-offset: -3px; }
+        .image-modal {
+            position: fixed; inset: 0; z-index: 1000; display: none;
+            align-items: center; justify-content: center; padding: 24px;
+            background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(10px);
+        }
+        .image-modal.is-open { display: flex; }
+        .image-modal-dialog { position: relative; max-width: 96vw; max-height: 92vh; }
+        .image-modal img { display: block; max-width: 96vw; max-height: 92vh; width: auto; height: auto; object-fit: contain; }
+        .image-modal-close {
+            position: fixed; top: 20px; right: 20px; width: 44px; height: 44px;
+            border: 1px solid rgba(255,255,255,0.25); border-radius: 50%;
+            background: rgba(15,23,42,0.8); color: #fff; font-size: 1.7rem;
+            line-height: 1; cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -299,7 +334,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Sagar<span>.</span></a>
+            <a href="index.html" class="logo">Sagar</a>
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="about.html">About</a>
@@ -317,10 +352,10 @@
                 <path d="M4 2v25l7-7 5 12 5-2-5-12 10-1L4 2z" fill="#1a73e8" stroke="#fff" stroke-width="2" stroke-linejoin="round"></path>
             </svg>
         </div>
-        <h2 style="font-size: 2.2rem; margin-bottom: 16px; color: #5f6368; font-weight: 500;">Hi, I'm Sagar Shivaji 👋</h2>        
+        <h2 style="font-size: 2.2rem; margin-bottom: 16px; color: #5f6368; font-weight: 500;">Hi, I'm Sagar Shivaji 👋😊</h2>        
         <h1 aria-label="I design interfaces, build apps, and create visual art.">
-            <span class="hero-line"><span style="--line: 0">I design AI interfaces, build</span></span>
-            <span class="hero-line"><span style="--line: 1">apps, and create <span class="hero-accent">visual art.</span></span></span>
+            <span class="hero-line"><span style="--line: 0">I Design & Build Products </span></span>
+            <span class="hero-line"><span style="--line: 1">and create <span class="hero-accent">visual art.</span></span></span>
         </h1>
         <p class="hero-subtitle"></p>
         <div class="hero-buttons">
@@ -333,26 +368,9 @@
     <section id="ux" class="section">
         <div class="container">
             <h2 class="section-title">Featured UI/UX Case Studies</h2>
-            <p class="section-subtitle">Deep dives into civic tech, social fitness, enterprise AI platforms, and design systems.</p>
+            <p class="section-subtitle">Deep dives into social fitness, consumer products, and design systems.</p>
             
             <div class="grid-2">
-                <!-- Project 1: Namma Yatri (Featured Flagship) -->
-                <div class="card">
-                    <div class="card-image-box">
-                        <img src="images/civic.png" alt="Namma Yatri Frictionless Civic Complaint">
-                    </div>
-                    <div class="card-content">
-                        <div class="tag-row">
-                            <span class="tag green">Civic Tech</span>
-                            <span class="tag">Mobile UX</span>
-                            <span class="tag amber">✦ Recommended</span>
-                        </div>
-                        <h3>Frictionless Civic Complaint</h3>
-                        <p>A simpler, safer, and more transparent way to report civic issues — removing administrative complexity from the citizen and moving it into the system.</p>
-                        <a href="case-study.html" class="link-arrow">Read Full Case Study</a>
-                    </div>
-                </div>
-
                 <!-- Project 2: Gymogram -->
                 <div class="card">
                     <div class="card-image-box">
@@ -367,40 +385,6 @@
                         <h3>Social Fitness Platform</h3>
                         <p>A fitness experience that combines personalized workouts, community engagement, and gamification to keep users motivated and consistent over the long term.</p>
                         <a href="case-study-gymogram.html" class="link-arrow">View Case Study </a>
-                    </div>
-                </div>
-
-                <!-- Project: Lead Generator -->
-                <div class="card">
-                    <div class="card-image-box">
-                        <img src="images/lead generator.png" alt="Lead Generator Enterprise Workflow" style="filter: blur(2px);">
-                    </div>
-                    <div class="card-content">
-                        <div class="tag-row">
-                            <span class="tag purple">SaaS Workflow</span>
-                            <span class="tag">Web CLI</span>
-                            <span class="tag amber">Shipped</span>
-                        </div>
-                        <h3>Lead Generator & Issue Tracker</h3>
-                        <p>Designed a browser-based command interface for rapid issue tracking, recruitment workflow automation, and structured candidate pipeline visualization.</p>
-                        <a href="case-study-leadgenerator.html" class="link-arrow">View Case Study </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Bench Sales Platform -->
-                <div class="card">
-                    <div class="card-image-box">
-                        <img src="images/benchsales.png" alt="AI-Powered Bench Sales Platform" style="filter: blur(2px);">
-                    </div>
-                    <div class="card-content">
-                        <div class="tag-row">
-                            <span class="tag">Staffing & Recruitment</span>
-                            <span class="tag purple">AI Product Design</span>
-                            <span class="tag amber">Shipped</span>
-                        </div>
-                        <h3>AI-Powered Bench Sales Platform</h3>
-                        <p>Designed an enterprise AI platform that simplifies consultant tracking, resume formatting, submission management, and recruiter decision-making for staffing teams.</p>
-                        <a href="case-study-benchsales.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
 
@@ -435,6 +419,21 @@
                         <a href="case-study-designsystem.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
+
+                <!-- Coming Soon Placeholder Card -->
+                <div class="card coming-soon-card">
+                    <div class="coming-soon-placeholder">
+                        <span class="coming-soon-mark">+</span>
+                        <strong>Coming Soon</strong>
+                    </div>
+                    <div class="card-content">
+                        <div class="tag-row">
+                            <span class="tag amber">In Progress</span>
+                        </div>
+                        <h3>New UI/UX Case Study</h3>
+                        <p>A new product design case study is currently being crafted. Check back soon for the full research and design process.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -467,23 +466,12 @@
                     </div>
                 </div>
 
-                <!-- App 2: Lead Generator -->
-                <div class="card">
-                    <div class="card-image-box" style="height: 260px;">
-                        <img src="images/lead generator.png" alt="Lead Generator CLI Web App" style="filter: blur(2px);">
-                    </div>
-                    <div class="card-content">
-                        <h3>Lead Generator & Issue Tracker</h3>
-                        <p>Designed and built a browser-based command-line interface for rapid issue tracking, client enrichment, and recruiting pipeline automation.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Web CLI</span>
-                            <span class="tech-tag">SaaS</span>
-                            <span class="tech-tag">Workflow Automation</span>
-                        </div>
-                        <div style="margin-top: 24px; display: flex; gap: 20px;">
-                            <a href="case-study-leadgenerator.html" class="link-arrow">View Case Study </a>
-                            <a href="https://github.com/Sagarshivaji" target="_blank" class="link-arrow" style="color: var(--text-muted);">GitHub Repo </a>
-                        </div>
+                <!-- Coming Soon Placeholder Card -->
+                <div class="card coming-soon-card">
+                    <div class="coming-soon-placeholder apps-placeholder">
+                        <span class="coming-soon-mark">+</span>
+                        <strong>Coming Soon</strong>
+                        <p>New application project launch.</p>
                     </div>
                 </div>
             </div>
@@ -499,9 +487,9 @@
             <div class="grid-3">
                 <!-- Poster 1: Greek God -->
                 <div class="card">
-                    <div class="poster-box">
+                    <button class="poster-box artwork-trigger" type="button" data-full-image="images/Poster design greek god copy.jpg" data-image-title="Greek God Poster" aria-label="View Greek God Poster in full size">
                         <img src="images/Poster design greek god copy.jpg" alt="Greek God Poster Design">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <span class="tag">Photoshop · 2026</span>
                         <h3>Greek God Poster</h3>
@@ -510,9 +498,9 @@
 
                 <!-- Poster 2: Instagram Post -->
                 <div class="card">
-                    <div class="poster-box">
+                    <button class="poster-box artwork-trigger" type="button" data-full-image="images/instagram post updated.jpg" data-image-title="Social Campaign Creative" aria-label="View Social Campaign Creative in full size">
                         <img src="images/instagram post updated.jpg" alt="Instagram Post Campaign">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <span class="tag">Branding · 2026</span>
                         <h3>Social Campaign Creative</h3>
@@ -521,9 +509,9 @@
 
                 <!-- Poster 3: 3D Box Mockup -->
                 <div class="card">
-                    <div class="poster-box">
+                    <button class="poster-box artwork-trigger" type="button" data-full-image="images/Box_Mockup_3.jpg" data-image-title="3D Packaging Mockup" aria-label="View 3D Packaging Mockup in full size">
                         <img src="images/Box_Mockup_3.jpg" alt="3D Box Packaging Mockup">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <span class="tag">Digital Art · 2026</span>
                         <h3>3D Packaging Mockup</h3>
@@ -542,9 +530,9 @@
             <div class="grid-3">
                 <!-- Sketch 1: Buddha -->
                 <div class="card">
-                    <div class="sketch-box">
+                    <button class="sketch-box artwork-trigger" type="button" data-full-image="Sketches/Buddha.jpeg" data-image-title="Buddha" aria-label="View Buddha drawing in full size">
                         <img src="Sketches/Buddha.jpeg" alt="Buddha Pencil Artwork by Sagar Shivaji">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <h3>Buddha</h3>
                     </div>
@@ -552,9 +540,9 @@
 
                 <!-- Sketch 2: Zoro -->
                 <div class="card">
-                    <div class="sketch-box">
+                    <button class="sketch-box artwork-trigger" type="button" data-full-image="Sketches/zoro.jpeg" data-image-title="Zoro" aria-label="View Zoro drawing in full size">
                         <img src="Sketches/zoro.jpeg" alt="Zoro Anime Drawing by Sagar Shivaji">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <h3>Zoro</h3>
                     </div>
@@ -562,9 +550,9 @@
 
                 <!-- Sketch 3: Loki -->
                 <div class="card">
-                    <div class="sketch-box">
+                    <button class="sketch-box artwork-trigger" type="button" data-full-image="Sketches/loki.jpeg" data-image-title="Loki" aria-label="View Loki drawing in full size">
                         <img src="Sketches/loki.jpeg" alt="Loki Portrait Drawing by Sagar Shivaji">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <h3>Loki</h3>
                     </div>
@@ -572,9 +560,9 @@
 
                 <!-- Sketch 4: Joker -->
                 <div class="card">
-                    <div class="sketch-box">
+                    <button class="sketch-box artwork-trigger" type="button" data-full-image="Sketches/joker.jpeg" data-image-title="Joker" aria-label="View Joker drawing in full size">
                         <img src="Sketches/joker.jpeg" alt="Joker Pencil Sketch by Sagar Shivaji">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <h3>Joker</h3>
                     </div>
@@ -582,9 +570,9 @@
 
                 <!-- Sketch 5: Bird -->
                 <div class="card">
-                    <div class="sketch-box">
+                    <button class="sketch-box artwork-trigger" type="button" data-full-image="Sketches/bird.jpeg" data-image-title="Bird Observational Study" aria-label="View Bird Observational Study in full size">
                         <img src="Sketches/bird.jpeg" alt="Bird Observational Drawing by Sagar Shivaji">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <h3>Bird Observational Study</h3>
                     </div>
@@ -592,9 +580,9 @@
 
                 <!-- Sketch 6: Hand -->
                 <div class="card">
-                    <div class="sketch-box">
+                    <button class="sketch-box artwork-trigger" type="button" data-full-image="Sketches/Hand.jpeg" data-image-title="Hand Anatomy Study" aria-label="View Hand Anatomy Study in full size">
                         <img src="Sketches/Hand.jpeg" alt="Hand Anatomical Study by Sagar Shivaji">
-                    </div>
+                    </button>
                     <div class="card-content">
                         <h3>Hand Anatomy Study</h3>
                     </div>
@@ -624,11 +612,17 @@
                 <a href="https://www.linkedin.com/in/sagar-shivaji-090904262/" target="_blank">LinkedIn</a>
                 <a href="https://www.behance.net/sagarshivaji" target="_blank">Behance</a>
                 <a href="https://github.com/Sagarshivaji" target="_blank">GitHub</a>
-                <a href="about.html">About</a>
-                <a href="case-study.html">Case Study</a>
             </div>
         </div>
     </footer>
+
+    <!-- Artwork image lightbox -->
+    <div class="image-modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Full-size artwork" aria-hidden="true">
+        <button class="image-modal-close" type="button" aria-label="Close full-size artwork">&times;</button>
+        <div class="image-modal-dialog">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
 
     <script>
         const hero = document.querySelector('.hero');
@@ -656,6 +650,41 @@
                 element.addEventListener('pointerleave', () => cursor?.classList.remove('pointer-hover'));
             });
         }
+
+        // Artwork lightbox functionality
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = imageModal?.querySelector('.image-modal-close');
+
+        document.querySelectorAll('.artwork-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                if (!imageModal || !modalImage) return;
+                modalImage.src = trigger.dataset.fullImage;
+                modalImage.alt = trigger.dataset.imageTitle || 'Full-size artwork';
+                imageModal.classList.add('is-open');
+                imageModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                modalClose?.focus();
+            });
+        });
+
+        const closeImageModal = () => {
+            if (!imageModal || !modalImage) return;
+            imageModal.classList.remove('is-open');
+            imageModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            modalImage.src = '';
+        };
+
+        modalClose?.addEventListener('click', closeImageModal);
+        imageModal?.addEventListener('click', event => {
+            if (event.target === imageModal) closeImageModal();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && imageModal?.classList.contains('is-open')) {
+                closeImageModal();
+            }
+        });
     </script>
 
     <style>

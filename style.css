@@ -3129,7 +3129,7 @@ html[data-theme="dark"] .nav-links a:not(.nav-resume-pill).active:hover {
 .footer-link:hover { color: var(--accent); }
 
 /* ══════════════════════════════════════════
-   FOOTER PRO — Premium (work.html)
+   FOOTER PRO — Premium (index.html)
 ══════════════════════════════════════════ */
 .footer-pro {
   position: relative;
@@ -4859,10 +4859,10 @@ button,
 /* "make back to work button in white and text inside in black" */
 .btn-back-to-work,
 .cs-back,
-a[href*="work.html"].btn,
-a[href*="work.html"].btn-primary,
-a[href*="work.html"].cs-back,
-a[href*="work.html"].btn-back-to-work {
+a[href*="index.html"].btn,
+a[href*="index.html"].btn-primary,
+a[href*="index.html"].cs-back,
+a[href*="index.html"].btn-back-to-work {
   background: #ffffff !important;
   color: #000000 !important;
   border: 1px solid #ffffff !important;
@@ -4879,9 +4879,9 @@ a[href*="work.html"].btn-back-to-work {
 
 .btn-back-to-work:hover,
 .cs-back:hover,
-a[href*="work.html"].btn:hover,
-a[href*="work.html"].btn-primary:hover,
-a[href*="work.html"].cs-back:hover {
+a[href*="index.html"].btn:hover,
+a[href*="index.html"].btn-primary:hover,
+a[href*="index.html"].cs-back:hover {
   background: #e2e8f0 !important;
   color: #000000 !important;
   border-color: #e2e8f0 !important;
