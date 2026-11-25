@@ -99,26 +99,21 @@
         }
         .hero-cursor {
             position: absolute;
-            z-index: 5;
-            width: 36px;
-            height: 64px;
+            z-index: 20;
+            width: 28px;
+            height: 36px;
             left: 0;
             top: 0;
             opacity: 0;
             pointer-events: none;
-            transform: translate(-50%, -50%);
+            transform: translate3d(-4px, -2px, 0);
             transition: opacity 0.28s ease;
-            will-change: left, top;
-            filter: drop-shadow(0 0 8px rgba(99, 181, 255, 0.24));
+            will-change: transform;
+            filter: drop-shadow(0 2px 3px rgba(32, 33, 36, 0.25));
         }
         .hero.is-active .hero-cursor { opacity: 1; }
-        .hero-cursor i {
-            position: absolute;
-            display: block;
-            width: 3px;
-            border-radius: 999px;
-            transform-origin: center;
-        }
+        .hero-cursor svg { transition: transform 0.18s ease; }
+        .hero-cursor.pointer-hover svg { transform: scale(1.15); }
         
         .hero::before {
             content: "";
@@ -309,26 +304,28 @@
                 <a href="index.html" class="active">Home</a>
                 <a href="about.html">About</a>
                 <a href="research.html">Research</a>
-                <a href="case-study.html">Case Study</a>
-                <a href="case-study-gymogram.html">Gymogram</a>
-                <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="btn btn-outline" style="padding: 8px 20px;">Resume ↗</a>
+                
+                <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="btn btn-primary" style="padding: 8px 20px;">Resume</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section --> 
     <header class="hero container">
-        <div class="hero-cursor" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="hero-cursor" aria-hidden="true">
+            <svg viewBox="0 0 28 36" width="28" height="36" focusable="false">
+                <path d="M4 2v25l7-7 5 12 5-2-5-12 10-1L4 2z" fill="#1a73e8" stroke="#fff" stroke-width="2" stroke-linejoin="round"></path>
+            </svg>
+        </div>
         <h2 style="font-size: 2.2rem; margin-bottom: 16px; color: #5f6368; font-weight: 500;">Hi, I'm Sagar Shivaji 👋</h2>        
         <h1 aria-label="I design interfaces, build apps, and create visual art.">
             <span class="hero-line"><span style="--line: 0">I design AI interfaces, build</span></span>
             <span class="hero-line"><span style="--line: 1">apps, and create <span class="hero-accent">visual art.</span></span></span>
         </h1>
-        <p class="hero-subtitle">AI Product Designer based in Hyderabad, India. Specializing in complex B2B platforms, AI workflows, scalable design systems, and human-centered digital experiences.</p>
+        <p class="hero-subtitle"></p>
         <div class="hero-buttons">
             <a href="#ux" class="btn btn-primary">Explore Case Studies</a>
             <a href="about.html" class="btn btn-outline">More About Me</a>
-            <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="btn btn-outline">Resume ↗</a>
         </div>
     </header>
 
@@ -350,9 +347,9 @@
                             <span class="tag">Mobile UX</span>
                             <span class="tag amber">✦ Recommended</span>
                         </div>
-                        <h3>Namma Yatri — Frictionless Civic Complaint</h3>
+                        <h3>Frictionless Civic Complaint</h3>
                         <p>A simpler, safer, and more transparent way to report civic issues — removing administrative complexity from the citizen and moving it into the system.</p>
-                        <a href="case-study.html" class="link-arrow">Read Full Case Study &rarr;</a>
+                        <a href="case-study.html" class="link-arrow">Read Full Case Study</a>
                     </div>
                 </div>
 
@@ -367,9 +364,9 @@
                             <span class="tag">Gamification</span>
                             <span class="tag amber">iOS Design</span>
                         </div>
-                        <h3>Gymogram — Social Fitness Platform</h3>
+                        <h3>Social Fitness Platform</h3>
                         <p>A fitness experience that combines personalized workouts, community engagement, and gamification to keep users motivated and consistent over the long term.</p>
-                        <a href="case-study-gymogram.html" class="link-arrow">View Case Study &rarr;</a>
+                        <a href="case-study-gymogram.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
 
@@ -386,7 +383,7 @@
                         </div>
                         <h3>Lead Generator & Issue Tracker</h3>
                         <p>Designed a browser-based command interface for rapid issue tracking, recruitment workflow automation, and structured candidate pipeline visualization.</p>
-                        <a href="case-study-leadgenerator.html" class="link-arrow">View Case Study &rarr;</a>
+                        <a href="case-study-leadgenerator.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
 
@@ -403,7 +400,7 @@
                         </div>
                         <h3>AI-Powered Bench Sales Platform</h3>
                         <p>Designed an enterprise AI platform that simplifies consultant tracking, resume formatting, submission management, and recruiter decision-making for staffing teams.</p>
-                        <a href="case-study-benchsales.html" class="link-arrow">View Case Study &rarr;</a>
+                        <a href="case-study-benchsales.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
 
@@ -419,7 +416,7 @@
                         </div>
                         <h3>Laundry Service — UX Case Study</h3>
                         <p>End-to-end research and interface design for an on-demand laundry app — addressing pricing transparency, real-time tracking, and simple scheduling.</p>
-                        <a href="case-study-laundry.html" class="link-arrow">View Case Study &rarr;</a>
+                        <a href="case-study-laundry.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
 
@@ -435,7 +432,7 @@
                         </div>
                         <h3>Leo Design System</h3>
                         <p>A structured color token and semantic component architecture engineered for consistency and developer handoff across enterprise web applications.</p>
-                        <a href="case-study-designsystem.html" class="link-arrow">View Case Study &rarr;</a>
+                        <a href="case-study-designsystem.html" class="link-arrow">View Case Study </a>
                     </div>
                 </div>
             </div>
@@ -464,8 +461,8 @@
                             <span class="tech-tag">Render Cloud</span>
                         </div>
                         <div style="margin-top: 24px; display: flex; gap: 20px;">
-                            <a href="https://job-pulse-toie.onrender.com/" target="_blank" class="link-arrow">Open Live App &nearr;</a>
-                            <a href="case-study-jobpulse.html" class="link-arrow" style="color: var(--text-muted);">Case Study &rarr;</a>
+                            <a href="https://job-pulse-toie.onrender.com/" target="_blank" class="link-arrow">Open Live App </a>
+                            <a href="case-study-jobpulse.html" class="link-arrow" style="color: var(--text-muted);">Case Study </a>
                         </div>
                     </div>
                 </div>
@@ -484,8 +481,8 @@
                             <span class="tech-tag">Workflow Automation</span>
                         </div>
                         <div style="margin-top: 24px; display: flex; gap: 20px;">
-                            <a href="case-study-leadgenerator.html" class="link-arrow">View Case Study &rarr;</a>
-                            <a href="https://github.com/Sagarshivaji" target="_blank" class="link-arrow" style="color: var(--text-muted);">GitHub Repo &nearr;</a>
+                            <a href="case-study-leadgenerator.html" class="link-arrow">View Case Study </a>
+                            <a href="https://github.com/Sagarshivaji" target="_blank" class="link-arrow" style="color: var(--text-muted);">GitHub Repo </a>
                         </div>
                     </div>
                 </div>
@@ -508,7 +505,6 @@
                     <div class="card-content">
                         <span class="tag">Photoshop · 2026</span>
                         <h3>Greek God Poster</h3>
-                        <p>Experimental typography and dramatic lighting compositing exploring classical sculpture in modern editorial layout.</p>
                     </div>
                 </div>
 
@@ -520,7 +516,6 @@
                     <div class="card-content">
                         <span class="tag">Branding · 2026</span>
                         <h3>Social Campaign Creative</h3>
-                        <p>High-engagement social campaign layout emphasizing visual hierarchy, modern color harmony, and punchy typography.</p>
                     </div>
                 </div>
 
@@ -532,7 +527,6 @@
                     <div class="card-content">
                         <span class="tag">Digital Art · 2026</span>
                         <h3>3D Packaging Mockup</h3>
-                        <p>Packaging design and dimensional surface mapping highlighting realistic textures, shadow depth, and brand identity.</p>
                     </div>
                 </div>
             </div>
@@ -543,7 +537,7 @@
     <section id="art" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Drawings & Sketches</h2>
-            <p class="section-subtitle">"Drawing taught me to observe." — Pencil artwork, portrait studies, and character drawings.</p>
+            <p class="section-subtitle">"Drawing taught me to observe."  Pencil artwork, portrait studies, and character drawings.</p>
             
             <div class="grid-3">
                 <!-- Sketch 1: Buddha -->
@@ -553,7 +547,6 @@
                     </div>
                     <div class="card-content">
                         <h3>Buddha</h3>
-                        <p>Detailed pencil artwork capturing serene expression, subtle shading gradations, and contemplative lighting.</p>
                     </div>
                 </div>
 
@@ -564,7 +557,6 @@
                     </div>
                     <div class="card-content">
                         <h3>Zoro</h3>
-                        <p>Manga line-art character study emphasizing dynamic anatomy, facial tension, and sword fighting energy.</p>
                     </div>
                 </div>
 
@@ -575,7 +567,6 @@
                     </div>
                     <div class="card-content">
                         <h3>Loki</h3>
-                        <p>Expressive portrait sketch exploring cinematic character emotion and dramatic high-contrast lighting.</p>
                     </div>
                 </div>
 
@@ -586,7 +577,6 @@
                     </div>
                     <div class="card-content">
                         <h3>Joker</h3>
-                        <p>Dark figurative study focusing on psychological tension, gritty texturing, and expressive facial lines.</p>
                     </div>
                 </div>
 
@@ -597,7 +587,6 @@
                     </div>
                     <div class="card-content">
                         <h3>Bird Observational Study</h3>
-                        <p>Nature illustration studying feather texture, curvature, and organic proportions.</p>
                     </div>
                 </div>
 
@@ -608,7 +597,6 @@
                     </div>
                     <div class="card-content">
                         <h3>Hand Anatomy Study</h3>
-                        <p>Rigorous anatomical pencil sketch analyzing foreshortening, knuckle articulation, and tendon form.</p>
                     </div>
                 </div>
             </div>
@@ -619,10 +607,8 @@
     <section id="contact" class="section dark-section">
         <div class="container">
             <h2>Let's build something remarkable together.</h2>
-            <p>I am open for full-time AI product design roles, enterprise SaaS opportunities, and select freelance collaborations.</p>
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                <a href="mailto:sagarshivaji89@gmail.com" class="btn btn-primary" style="background: white; color: #0b0f19; border: none; font-weight: 600;">Say Hello: sagarshivaji89@gmail.com &rarr;</a>
-                <a href="https://drive.google.com/file/d/1GSdCrdNhtTW1OOrWKYBNJSG5JsdlyeKb/view?usp=sharing" target="_blank" class="btn btn-outline" style="border-color: #334155; color: white;">View Resume ↗</a>
+                <a href="mailto:sagarshivaji89@gmail.com" class="btn btn-primary" style="background: white; color: #0b0f19; border: none; font-weight: 600;">Say Hello</a>
             </div>
         </div>
     </section>
@@ -632,7 +618,7 @@
         <div class="container footer-bottom">
             <div>
                 <p>&copy; 2026 Sagar Shivaji · All rights reserved</p>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 4px;">Crafted with care in Hyderabad, India</p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 4px;"> </p>
             </div>
             <div class="footer-legal">
                 <a href="https://www.linkedin.com/in/sagar-shivaji-090904262/" target="_blank">LinkedIn</a>
@@ -650,42 +636,25 @@
         if (hero && window.matchMedia('(pointer: fine)').matches) {
             hero.style.cursor = 'none';
             const cursor = hero.querySelector('.hero-cursor');
-            let targetX = 0;
-            let targetY = 0;
-            let currentX = 0;
-            let currentY = 0;
-            let cursorStarted = false;
 
             hero.addEventListener('pointerenter', () => hero.classList.add('is-active'));
-            hero.addEventListener('pointerleave', () => hero.classList.remove('is-active'));
+            hero.addEventListener('pointerleave', () => {
+                hero.classList.remove('is-active');
+                cursor?.classList.remove('pointer-hover');
+            });
             hero.addEventListener('pointermove', (event) => {
                 const rect = hero.getBoundingClientRect();
                 const x = event.clientX - rect.left;
                 const y = event.clientY - rect.top;
                 hero.style.setProperty('--mouse-x', `${x}px`);
                 hero.style.setProperty('--mouse-y', `${y}px`);
-                targetX = x;
-                targetY = y;
-
-                if (!cursorStarted && cursor) {
-                    currentX = x;
-                    currentY = y;
-                    cursorStarted = true;
-                }
+                if (cursor) cursor.style.transform = `translate3d(${x - 4}px, ${y - 2}px, 0)`;
             });
 
-            const smoothCursor = () => {
-                currentX += (targetX - currentX) * 0.14;
-                currentY += (targetY - currentY) * 0.14;
-
-                if (cursor) {
-                    cursor.style.left = `${currentX}px`;
-                    cursor.style.top = `${currentY}px`;
-                }
-
-                requestAnimationFrame(smoothCursor);
-            };
-            requestAnimationFrame(smoothCursor);
+            hero.querySelectorAll('a, button').forEach(element => {
+                element.addEventListener('pointerenter', () => cursor?.classList.add('pointer-hover'));
+                element.addEventListener('pointerleave', () => cursor?.classList.remove('pointer-hover'));
+            });
         }
     </script>
 
@@ -712,5 +681,6 @@
         }
     </style>
 
+<script src="mobile-nav.js"></script>
 </body>
 </html>
